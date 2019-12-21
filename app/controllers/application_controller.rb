@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   private
 
     def accept_header_check_for_api_requests
-      is_api_request = RequestTypeCheck.new.matches?(request)
+      is_api_request = ApiRequestCheck.new.matches?(request)
       if is_api_request
         accept_header = request.headers["Accept"]
         accept_version = "v1"

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   root 'ui/leaves#index'
 
-  namespace :api, defaults: { format: :json }, path: '/', constraints: RequestTypeCheck.new do
+  namespace :api, defaults: { format: :json }, path: '/', constraints: ApiRequestCheck.new do
     scope module: :v1 do
       resources :quotes, only: [:index, :show]
     end
@@ -14,5 +14,5 @@ Rails.application.routes.draw do
   match "/500", to: "application#internal_server_error", via: [:all]
 
   # For react UI requests
-  match '*path', to: 'ui/leaves#index', via: :all, constraints: !RequestTypeCheck.new
+  match '*path', to: 'ui/leaves#index', via: :all, constraints: UiRequestCheck.new
 end

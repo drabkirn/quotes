@@ -2,13 +2,6 @@
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 
-require File.expand_path('../config/environment', __dir__)
-
-# Prevent database truncation if the environment is production
-abort("The Rails environment is running in production mode!") if Rails.env.production?
-require 'rspec/rails'
-# Add additional requires below this line. Rails is not loaded until this point!
-
 # Simple Cov
 require 'simplecov'
 SimpleCov.start 'rails' do
@@ -16,7 +9,15 @@ SimpleCov.start 'rails' do
   add_filter 'app/mailers/application_mailer.rb'
   add_filter 'app/channels/application_cable/connection.rb'
   add_filter 'app/channels/application_cable/channel.rb'
+  add_filter 'app/helpers/application_helper.rb'
 end
+
+require File.expand_path('../config/environment', __dir__)
+
+# Prevent database truncation if the environment is production
+abort("The Rails environment is running in production mode!") if Rails.env.production?
+require 'rspec/rails'
+# Add additional requires below this line. Rails is not loaded until this point!
 
 # DB Cleaner
 require 'database_cleaner'
@@ -101,4 +102,7 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
+
+  # Include our custom helpers
+  config.include RequestSpecHelper
 end
