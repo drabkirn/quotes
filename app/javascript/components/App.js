@@ -1,8 +1,20 @@
 import React from 'react';
+import { Route, Switch } from 'react-router-dom';
+
+import Home from './Home/Home';
+import Quotes from './Quotes/Quotes';
+import Quote from './Quotes/Quote';
+
+import 'desityle/dist/css/desityle.min.css';
+import './Assets/css/quotes.css';
 
 function App() {
   return (
-    <h1>Hello World</h1>
+    <Switch>
+      <Route exact path="/quotes/:id" component={ Quote } />
+      <Route exact path="/quotes" component={ Quotes } />
+      <Route path="/" component={ Home } />
+    </Switch>
   );
 }
 

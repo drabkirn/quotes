@@ -1,0 +1,1 @@
+export const QUOTPA_BASE_URL = "https://go.cdadityang.xyz/quotes";

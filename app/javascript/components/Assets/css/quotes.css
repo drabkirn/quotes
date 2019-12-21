@@ -1,0 +1,29 @@
+:root {
+  --quotpa-pink-color: #A53860;
+}
+
+.fs-1-6 {
+  font-size: 1.6em;
+}
+
+.header-intro-dsk-logo a, .header-intro-mob-logo a {
+  border-bottom: none;
+}
+
+blockquote {
+  border-left-color: var(--quotpa-pink-color);
+}
+
+.card:nth-child(even) {
+  clear: both;
+}
+
+.card {
+  background: var(--quotpa-pink-color);
+}
+
+.card-header h3 a, .card-content p a {
+  border-bottom: none;
+  line-height: 1;
+  font-size: 1em;
+}
