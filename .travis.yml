@@ -25,7 +25,8 @@ before_install:
   - tar -zxvf geckodriver-v0.24.0-linux64.tar.gz
   - sudo mv geckodriver /usr/local/bin/
 install:
-  - bundle install --path vendor/bundle
+  - bundle config set path 'vendor/bundle'
+  - bundle install
   - yarn install
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
