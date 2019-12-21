@@ -45,6 +45,9 @@ group :test do
   gem 'capybara', '~> 3.29'
   gem 'selenium-webdriver', '~> 3.142', '>= 3.142.6'
   gem 'webdrivers', '~> 4.1', '>= 4.1.3'
+
+  # Custom gems:
+  gem 'capybara-screenshot', '~> 1.0', '>= 1.0.24'
 end
 
 ## Custom Gems:

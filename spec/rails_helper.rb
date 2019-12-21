@@ -30,6 +30,29 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
+# Capybara Settings
+require 'capybara/rspec'
+require 'capybara/dsl'
+require 'capybara-screenshot/rspec'
+
+Capybara.register_driver :firefox do |app|
+  Capybara::Selenium::Driver.new(app, browser: :firefox)
+end
+
+Capybara.server = :puma
+Capybara.server_host = '0.0.0.0'
+Capybara.server_port = 3005
+
+Capybara.default_driver = :firefox
+Capybara.javascript_driver = :firefox
+Capybara.app_host = 'http://127.0.0.1:3005'
+Capybara.default_max_wait_time = 5
+
+Capybara::Screenshot.register_driver(:firefox) do |driver, path|
+  driver.browser.save_screenshot(path)
+end
+Capybara.save_path = ENV["capybara_screenshots_path"]
+
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
@@ -105,4 +128,13 @@ RSpec.configure do |config|
 
   # Include our custom helpers
   config.include RequestSpecHelper
+
+  # Capybara Settings
+  config.before(:suite) do
+    Webpacker.compile
+  end
+
+  config.before(:each) do
+    config.include Capybara::DSL
+  end
 end
