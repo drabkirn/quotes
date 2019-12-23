@@ -26,17 +26,11 @@ feature "Drabkirn Quotes Homepage", js: true do
 
   scenario "Navigation links" do
     expect(page).to have_selector('.btn', text: 'All Quotes')
-    expect(page).to have_selector('.btn', text: 'Drabkirn')
   end
 
   scenario "Navigate to /quotes when button is clicked" do
     click_on 'All Quotes'
     expect(page.current_path).to eq "/quotes"
-  end
-
-  scenario "Navigate to drabkirn website when button is clicked" do
-    click_on 'Drabkirn'
-    expect(page.current_path).to eq "drabkirn.cdadityang.xyz"
   end
 
   it_behaves_like "Drabkirn Quotes Footer Content"

@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { QUOTPA_BASE_URL } from '../Shared/Defaults';
+import { DRABKRIN_QUOTES_BASE_URL } from '../Shared/Defaults';
 
 function QuoteCard(props) {
-  const twitterShareURL = `https://twitter.com/intent/tweet?text=${ props.quoteContent }&hashtags=quotpa,quote&url=${QUOTPA_BASE_URL}/quotes/${props.quoteId}&via=drabkirn`;
+  const twitterShareURL = `https://twitter.com/intent/tweet?text=${ props.quoteContent }&hashtags=drabkirn,quote&url=${DRABKRIN_QUOTES_BASE_URL}/quotes/${props.quoteId}&via=drabkirn`;
 
-  const whatsAppShareURL = `https://api.whatsapp.com/send?text=${ props.quoteContent }. See more at ${QUOTPA_BASE_URL}`
+  const whatsAppShareURL = `https://api.whatsapp.com/send?text=${ props.quoteContent }. See more at ${DRABKRIN_QUOTES_BASE_URL}`
 
   return (
     <React.Fragment>

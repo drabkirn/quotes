@@ -48,8 +48,6 @@ function Home() {
 
           <div className="align-center">
             <Link to={"/quotes"} className="btn wide-btn mb-20">All Quotes</Link>
-            <br /><br />
-            <a href="https://drabkirn.cdadityang.xyz" target="_blank" rel="noopener noreferrer" className="btn wide-btn">Drabkirn</a>
           </div>
         </div>
       </section>
