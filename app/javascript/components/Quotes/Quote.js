@@ -17,6 +17,7 @@ function Quote(props) {
 
   const myQuote = store.quotes.quote;
   const myQuoteError = store.quotes.err;
+  console.log(store)
 
   // Get the Redux Dispatch
   const dispatch = useDispatch();

@@ -36,17 +36,27 @@ function Home() {
             We usually release a new quote every Tuesday. We're also setting up an API so that developers can integrate our quotes in their applications. Here's a random quote for you to get started:
           </p>
 
-          <blockquote>
-            {
-              allQuotes && allQuotes[randomNumber].content
-            }
-            
-            {
-              allQuotesError && allQuotesError.message
-            }
-          </blockquote>
+          {
+            allQuotes ? (
+              <blockquote>
+                {
+                  allQuotes && allQuotes[randomNumber].content
+                }
+              </blockquote>
+            ) : ("")
+          }
 
-          <div className="align-center">
+          {
+            allQuotesError ? (
+              <div className="mt-20">
+                <div className="jumbo error-jumbo mt-30">
+                  <p>{ allQuotesError.message }</p>
+                </div>
+              </div>
+            ) : ("")
+          }
+
+          <div className="align-center mt-50">
             <Link to={"/quotes"} className="btn wide-btn mb-20">All Quotes</Link>
           </div>
         </div>

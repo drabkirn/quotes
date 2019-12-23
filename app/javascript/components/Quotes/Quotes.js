@@ -44,7 +44,13 @@ function Quotes() {
           }
           
           {
-            allQuotesError && allQuotesError.message
+            allQuotesError ? (
+              <div className="mt-20">
+                <div className="jumbo error-jumbo mt-30">
+                  <p>{ allQuotesError.message }</p>
+                </div>
+              </div>
+            ) : ("")
           }
 
           <div className="float-clearfix"></div>

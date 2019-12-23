@@ -25,7 +25,9 @@ export const fetchAllQuotes = () => {
       }).catch((err) => {
         dispatch({
           type: 'GET_ALL_QUOTES_ERROR',
-          err: err
+          err: {
+            message: err
+          }
         });
       });
   };
@@ -58,7 +60,9 @@ export const fetchQuote = (quoteId) => {
       }).catch((err) => {
         dispatch({
           type: 'GET_QUOTE_ERROR',
-          err: err
+          err: {
+            message: err
+          }
         });
       });
   };
