@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
+import { Helmet } from "react-helmet";
 
 import MainHeader from '../Shared/MainHeader';
 import Footer from '../Shared/Footer';
@@ -35,6 +36,43 @@ function Quote(props) {
 
   return (
     <React.Fragment>
+      <Helmet>
+        <title>{ allQuotes ? (allQuotes[quoteId - 1].title + ` | Quote ${quoteId}`) : (`Drabkirn Quote ${quoteId}`) }</title>
+
+        <meta name="description" content={ allQuotes ? (allQuotes[quoteId - 1].content) : ("Collection of quotes from Drabkirn to change your mindset to achieve more, get inspired, and improve your life. We write about anything, anywhere for anyone.") } />
+
+        {/* Facebook Meta */}
+        <meta property="og:url" content={ `https://drabkirn.quotes.cdadityang.xyz/quotes/${quoteId}` } />
+        <meta property="og:image" content="https://drabkirn.quotes.cdadityang.xyz/content/images/drabkirn-logo-180x180.png" />
+        <meta property="og:description" content={ allQuotes ? (allQuotes[quoteId - 1].content) : ("Collection of quotes from Drabkirn to change your mindset to achieve more, get inspired, and improve your life. We write about anything, anywhere for anyone.") } />
+        <meta property="og:title" content={ allQuotes ? (allQuotes[quoteId - 1].title + ` | Quote ${quoteId}`) : (`Drabkirn Quote ${quoteId}`) } />
+        <meta property="og:site_name" content={ allQuotes ? (allQuotes[quoteId - 1].title + ` | Quote ${quoteId}`) : (`Drabkirn Quote ${quoteId}`) } />
+        <meta property="og:see_also" content="https://drabkirn.quotes.cdadityang.xyz/quotes" />
+
+        {/* G+ Meta tags */}
+        <meta itemprop="name" content={ allQuotes ? (allQuotes[quoteId - 1].title + ` | Quote ${quoteId}`) : (`Drabkirn Quote ${quoteId}`) } />
+        <meta itemprop="description" content={ allQuotes ? (allQuotes[quoteId - 1].content) : ("Collection of quotes from Drabkirn to change your mindset to achieve more, get inspired, and improve your life. We write about anything, anywhere for anyone.") } />
+        <meta itemprop="image" content="https://drabkirn.quotes.cdadityang.xyz/content/images/drabkirn-logo-180x180.png" />
+
+        {/* Twitter Meta Tags */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:url" content={ `https://drabkirn.quotes.cdadityang.xyz/quotes/${quoteId}` } />
+        <meta name="twitter:title" content={ allQuotes ? (allQuotes[quoteId - 1].title + ` | Quote ${quoteId}`) : (`Drabkirn Quote ${quoteId}`) } />
+        <meta name="twitter:description" content={ allQuotes ? (allQuotes[quoteId - 1].content) : ("Collection of quotes from Drabkirn to change your mindset to achieve more, get inspired, and improve your life. We write about anything, anywhere for anyone.") } />
+        <meta name="twitter:image" content="https://drabkirn.quotes.cdadityang.xyz/content/images/drabkirn-logo-180x180.png" />
+        
+        {/* Themes Meta */}
+        <meta name="theme-color" content="#A53860" />
+        <meta name="msapplication-navbutton-color" content="#A53860" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="#A53860" />
+        
+        {/* icons meta */}
+        <link rel="apple-touch-icon" sizes="180x180" href="/content/images/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" href="/content/images/favicon-32x32.png" sizes="32x32" />
+        <link rel="icon" type="image/png" href="/content/images/favicon-16x16.png" sizes="16x16" />
+      </Helmet>
+
       <MainHeader />
 
       <section>

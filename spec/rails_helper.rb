@@ -46,7 +46,7 @@ Capybara.server_port = 3005
 Capybara.default_driver = :firefox
 Capybara.javascript_driver = :firefox
 Capybara.app_host = 'http://127.0.0.1:3005'
-Capybara.default_max_wait_time = 5
+Capybara.default_max_wait_time = 10
 
 Capybara::Screenshot.register_driver(:firefox) do |driver, path|
   driver.browser.save_screenshot(path)

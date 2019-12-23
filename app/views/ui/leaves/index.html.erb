@@ -2,3 +2,27 @@
 <%= javascript_pack_tag 'index' %>
 
 <div id="root"></div>
+
+<%
+  @BASE_URL = "https://drabkirn.quotes.cdadityang.xyz"
+%>
+
+<% if params["path"].present? %>
+  <% if params["path"] == "quotes" %>
+    <% 
+      @meta_title = "All Drabkirn Quotes - Redefined inspiration in some words"
+      @meta_page_url = @BASE_URL + "/quotes"
+    %>
+
+  <% else %>
+    <% 
+      @quote_id = params["path"].split("/")[1].to_i
+      if @quote_id != 0 and @quote_id.is_a?(Integer) and !(@quote_id < 0) and !(@quote_id > Quote.all.count)
+        @quote = Quote.find(@quote_id)
+        @meta_title = @quote.title + " | Quote #{@quote_id}"
+        @meta_description = @quote.content
+        @meta_page_url = @BASE_URL + "/quotes/#{@quote_id}"
+      end
+    %>
+  <% end %>
+<% end %>

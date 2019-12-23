@@ -1,10 +1,12 @@
 require 'rails_helper'
 
 feature "/quotes/:id - Shows Quote of requested ID", js: true do
-  
+
   before(:each) do
-    3.times { create(:quote) }
-    @selected_quote = Quote.last
+    (1..3).each do |i|
+      create(:quote, id: i)
+    end
+    @selected_quote = Quote.first
     visit "/quotes/#{@selected_quote.id}"
   end
 
