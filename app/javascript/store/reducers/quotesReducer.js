@@ -1,7 +1,6 @@
 let initState = {
     quotes: null,
-    quote: null,
-    isFetching: false,
+    isFetching: true,
     err: null
   };
 
@@ -18,32 +17,13 @@ const quotesReducer = (state = initState, action) => {
       return {
         ...state,
         err: action.err.error ? action.err.error : action.err.errors,
-        quotes: null
+        quotes: null,
+        isFetching: false
       };
     case 'GET_ALL_QUOTES_ERROR':
       return {
         ...state,
-        err: action.err.message,
-        quote: null
-      };
-    case 'GET_QUOTE_SUCCESS':
-      return {
-        ...state,
-        err: null,
-        quote: action.payload.data,
-        isFetching: false
-      };
-    case 'GET_QUOTE_API_ERROR':
-      return {
-        ...state,
-        err: action.err.error ? action.err.error : action.err.errors,
-        quotes: null
-      };
-    case 'GET_QUOTE_ERROR':
-      return {
-        ...state,
-        err: action.err.message,
-        quotes: null
+        err: action.err.message
       };
     default:
       return state;

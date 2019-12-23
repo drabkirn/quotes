@@ -23,7 +23,9 @@ function Home() {
 
   // React Hook for ComponentDidMount
   useEffect(() => {
-    dispatch(fetchAllQuotes());
+    if(!allQuotes) {
+      dispatch(fetchAllQuotes());
+    }
   }, []);
 
   return (

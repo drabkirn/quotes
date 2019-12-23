@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import MainHeader from '../Shared/MainHeader';
 import Footer from '../Shared/Footer';
-import { fetchQuote } from '../../store/actions/quotesActions';
+import { fetchAllQuotes } from '../../store/actions/quotesActions';
 
 function Quote(props) {
   const quoteId = parseInt(props.match.params.id);
@@ -15,17 +15,23 @@ function Quote(props) {
   // Get the Redux state
   const store = useSelector(store => store);
 
-  const myQuote = store.quotes.quote;
-  const myQuoteError = store.quotes.err;
-  console.log(store)
+  const allQuotes = store.quotes.quotes;
+  const allQuotesError = store.quotes.err;
 
   // Get the Redux Dispatch
   const dispatch = useDispatch();
 
   // React Hook for ComponentDidMount
   useEffect(() => {
-    dispatch(fetchQuote(quoteId));
+    if(!allQuotes) {
+      dispatch(fetchAllQuotes());
+    }
   }, []);
+
+  if(allQuotes) {
+    const allQuotesLength = allQuotes.length;
+    if(quoteId < 0 || quoteId > allQuotesLength) return <Redirect to="/quotes" />;
+  }
 
   return (
     <React.Fragment>
@@ -34,17 +40,17 @@ function Quote(props) {
       <section>
         <div className="container mt-50">
           {
-            myQuoteError ? (
+            allQuotesError ? (
               <React.Fragment>
                 <div className="jumbo error-jumbo">
-                  <p>{ myQuoteError.message }</p>
+                  <p>{ allQuotesError.message }</p>
                 </div>
               </React.Fragment>
             ) : (
               <React.Fragment>
-                <h3 className="align-center mb-35">{ myQuote && myQuote.title }</h3>
-                <blockquote>{myQuote && myQuote.content}</blockquote>
-                <p className="align-right"><b><em>- { myQuote && myQuote.author }</em></b></p>
+                <h3 className="align-center mb-35">{ allQuotes && allQuotes[quoteId - 1].title }</h3>
+                <blockquote>{allQuotes && allQuotes[quoteId - 1].content}</blockquote>
+                <p className="align-right"><b><em>- { allQuotes && allQuotes[quoteId - 1].author }</em></b></p>
               </React.Fragment>
             )
           }
