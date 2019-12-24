@@ -34,3 +34,5 @@ yarn-debug.log*
 /config/application.yml
 # Ignore coverage
 /coverage
+# Ignore quotes seed file
+/db/quotes_seed.rb

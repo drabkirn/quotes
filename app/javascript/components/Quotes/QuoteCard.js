@@ -4,9 +4,12 @@ import { Link } from 'react-router-dom';
 import { DRABKRIN_QUOTES_BASE_URL } from '../Shared/Defaults';
 
 function QuoteCard(props) {
-  const twitterShareURL = `https://twitter.com/intent/tweet?text=${ props.quoteContent }&hashtags=drabkirn,quote&url=${DRABKRIN_QUOTES_BASE_URL}/quotes/${props.quoteId}&via=drabkirn`;
+  const twitterCharLimit = 220;
+  const twitterTruncatedText = textTruncate(props.quoteContent, twitterCharLimit);
 
-  const whatsAppShareURL = `https://api.whatsapp.com/send?text=${ props.quoteContent }. See more at ${DRABKRIN_QUOTES_BASE_URL}`
+  const twitterShareURL = `https://twitter.com/intent/tweet?text=${ twitterTruncatedText }&hashtags=drabkirn,quote&url=${DRABKRIN_QUOTES_BASE_URL}/quotes/${props.quoteId}&via=drabkirn`;
+
+  const whatsAppShareURL = `https://api.whatsapp.com/send?text=${ props.quoteContent } See more at ${DRABKRIN_QUOTES_BASE_URL}`
 
   return (
     <React.Fragment>
@@ -24,6 +27,14 @@ function QuoteCard(props) {
       </div>
     </React.Fragment>
   );
+}
+
+function textTruncate(text, textLimit) {
+  if(text.length > textLimit) {
+    return text.substring(0, textLimit) + "...";
+  } else {
+    return text;
+  }
 }
 
 export default QuoteCard;

@@ -4,6 +4,8 @@ feature "All Quotes Page - /quotes", js: true do
   
   before(:each) do
     3.times { create(:quote) }
+    # Test for Twitter truncate text
+    create(:quote, content: Faker::Lorem.sentence(word_count: 50))
     visit "/quotes"
   end
 
@@ -18,7 +20,16 @@ feature "All Quotes Page - /quotes", js: true do
     allQuotes.each do |quote|
       expect(page).to have_selector('.card .card-header h3', text: quote.title)
       expect(page).to have_selector('.card .card-content p', text: quote.content)
-      expect(page).to have_selector('.card .card-footer a[href="https://twitter.com/intent/tweet?text=' + quote.content + '&hashtags=drabkirn,quote&url=' + drabkirnQuotesBaseURL + '/quotes/' + quote.id.to_s + '&via=drabkirn"]')
+
+      twitterCharLimit = 220;
+      twitterTruncatedText = "";
+      if(quote.content.length > twitterCharLimit)
+        twitterTruncatedText = quote.content[0...220] + "..."
+      else
+        twitterTruncatedText = quote.content
+      end
+
+      expect(page).to have_selector('.card .card-footer a[href="https://twitter.com/intent/tweet?text=' + twitterTruncatedText + '&hashtags=drabkirn,quote&url=' + drabkirnQuotesBaseURL + '/quotes/' + quote.id.to_s + '&via=drabkirn"]')
       expect(page).to have_selector('.card .card-footer a[href="https://api.whatsapp.com/send?text=' + quote.content + '. See more at ' + drabkirnQuotesBaseURL)
     end
 
