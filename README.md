@@ -21,8 +21,7 @@
 
 Collection of quotes from Drabkirn to change your mindset to achieve more, get inspired, and improve your life.
 
-<!-- TODO: Demo or website here -->
-<!-- **[Visit Website here](https://go.brinkirn.xyz/go)** -->
+**[Visit Website here](https://drabkirn.quotes.cdadityang.xyz)**
 
 -----
 -----
