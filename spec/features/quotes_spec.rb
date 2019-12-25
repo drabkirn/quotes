@@ -29,8 +29,8 @@ feature "All Quotes Page - /quotes", js: true do
         twitterTruncatedText = quote.content
       end
 
-      expect(page).to have_selector('.card .card-footer a[href="https://twitter.com/intent/tweet?text=' + twitterTruncatedText + '&hashtags=drabkirn,quote&url=' + drabkirnQuotesBaseURL + '/quotes/' + quote.id.to_s + '&via=drabkirn"]')
-      expect(page).to have_selector('.card .card-footer a[href="https://api.whatsapp.com/send?text=' + quote.content + ' See more at ' + drabkirnQuotesBaseURL)
+      expect(page).to have_selector('.card .card-footer a[href="https://twitter.com/intent/tweet?text=' + twitterTruncatedText + '%0A&hashtags=drabkirn,quote&url=' + drabkirnQuotesBaseURL + '/quotes/' + quote.id.to_s + '&via=drabkirn"]')
+      expect(page).to have_selector('.card .card-footer a[href="https://api.whatsapp.com/send?text=' + quote.content + '%0A%0A See more at ' + drabkirnQuotesBaseURL)
     end
 
     expect(page).to have_selector('.card .card-footer img[alt="twtr-share-icon"]', count: Quote.all.count)

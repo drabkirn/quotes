@@ -7,9 +7,9 @@ function QuoteCard(props) {
   const twitterCharLimit = 220;
   const twitterTruncatedText = textTruncate(props.quoteContent, twitterCharLimit);
 
-  const twitterShareURL = `https://twitter.com/intent/tweet?text=${ twitterTruncatedText }&hashtags=drabkirn,quote&url=${DRABKRIN_QUOTES_BASE_URL}/quotes/${props.quoteId}&via=drabkirn`;
+  const twitterShareURL = `https://twitter.com/intent/tweet?text=${ twitterTruncatedText }%0A&hashtags=drabkirn,quote&url=${DRABKRIN_QUOTES_BASE_URL}/quotes/${props.quoteId}&via=drabkirn`;
 
-  const whatsAppShareURL = `https://api.whatsapp.com/send?text=${ props.quoteContent } See more at ${DRABKRIN_QUOTES_BASE_URL}`
+  const whatsAppShareURL = `https://api.whatsapp.com/send?text=${ props.quoteContent }%0A%0A See more at ${DRABKRIN_QUOTES_BASE_URL}`
 
   return (
     <React.Fragment>
