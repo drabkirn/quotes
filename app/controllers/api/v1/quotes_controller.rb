@@ -23,7 +23,7 @@ class Api::V1::QuotesController < ApplicationController
   end
 
   def newsletter_subscribe
-    if(request.host != "drabkirn.cdadityang.xyz")
+    if(request.origin != "https://drabkirn.cdadityang.xyz")
       send_response = {
         status: 401,
         errors: {
