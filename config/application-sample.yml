@@ -3,6 +3,9 @@ test:
   db_username:
   db_password:
   db_name:
+  capybara_screenshots_path:
+  newsletter_list_id:
+  newsletter_api_key:
 
 
 development:
@@ -10,6 +13,8 @@ development:
   db_username:
   db_password:
   db_name:
+  newsletter_list_id:
+  newsletter_api_key:
 
 
 production:
@@ -17,3 +22,5 @@ production:
   db_username:
   db_password:
   db_name:
+  newsletter_list_id:
+  newsletter_api_key:
