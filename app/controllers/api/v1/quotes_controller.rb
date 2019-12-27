@@ -23,6 +23,17 @@ class Api::V1::QuotesController < ApplicationController
   end
 
   def newsletter_subscribe
+    if(request.host != "drabkirn.cdadityang.xyz")
+      send_response = {
+        status: 401,
+        errors: {
+          message: Message.newsletter_unauthorized_request
+        }
+      }
+      json_response(send_response, :unauthorized)
+      return
+    end
+
     require 'uri'
     require 'net/http'
     require 'json'

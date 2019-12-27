@@ -35,4 +35,8 @@ class Message
   def self.newsletter_api_error
     "Error: There is something wrong with the request"
   end
+
+  def self.newsletter_unauthorized_request
+    "Exception: You are not permitted to make this request"
+  end
 end
