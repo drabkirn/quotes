@@ -33,5 +33,12 @@ module Quotes
 
     # Handle exceptions the manual way in API-only app
     config.exceptions_app = self.routes
+
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins ['http://192.168.225.128:3004', 'https://drabkirn.cdadityang.xyz']
+        resource '/newsletter_subscribe', headers: 'Access-Control-Allow-Origin', methods: [:post]
+      end
+    end
   end
 end

@@ -22,4 +22,17 @@ class Message
   def self.exception_internal_server_error
     "Exception: 500 Internal Server error. There is something wrong from our end, check back soon or contact us"
   end
+
+  # Newsletter Messages
+  def self.newsletter_email_subscribed
+    "Your email is added to our newsletter successfully"
+  end
+
+  def self.newsletter_invalid_subscriber_info
+    "It looks like you've entered invalid email or name. Please try again with proper details"
+  end
+
+  def self.newsletter_api_error
+    "Error: There is something wrong with the request"
+  end
 end

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json }, path: '/', constraints: ApiRequestCheck.new do
     scope module: :v1 do
       resources :quotes, only: [:index, :show]
+      post 'newsletter_subscribe', to: "quotes#newsletter_subscribe"
     end
   end
 
