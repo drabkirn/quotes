@@ -52,19 +52,16 @@ class Api::V1::QuotesController < ApplicationController
       return
     end
 
-    uri = URI("https://us4.api.mailchimp.com/3.0/lists/" + ENV["newsletter_list_id"] + "/members")
+    # Get temporary Access token valid for 1 hour
+    uri = URI("https://api.sendpulse.com/oauth/access_token")
     request = Net::HTTP::Post.new(uri.request_uri)
-    # Request headers
-    request['Content-Type'] = 'application/json'
-    request['Authorization'] = 'auth ' + ENV["newsletter_api_key"]
 
-    # Request body
+    request['Content-Type'] = 'application/json'
+
     myBody = {
-      email_address: subscriber_email,
-      status: "subscribed",
-      merge_fields: {
-        FNAME: subscriber_first_name
-      }
+      grant_type: "client_credentials",
+      client_id: ENV["newsletter_client_id"],
+      client_secret: ENV["newsletter_client_secret"]
     }.to_json
 
     request.body = myBody
@@ -73,9 +70,54 @@ class Api::V1::QuotesController < ApplicationController
         http.request(request)
     end
 
+    response_code = JSON.parse(response.code)
     response_body = JSON.parse(response.body)
 
-    if (response.code.to_i < 300)
+    temp_access_token = ""
+
+    # If access token is valid, then only continue
+    if(response_code == 200)
+      temp_access_token = response_body["access_token"]
+    else
+      send_response = {
+        status: 422,
+        errors: {
+          message: Message.newsletter_api_error,
+          detail: response_body["message"]
+        }
+      }
+      json_response(send_response, :unprocessable_entity)
+      return
+    end
+
+    # Make API call to add email to newsletter
+    uri = URI("https://api.sendpulse.com/addressbooks/" + ENV["newsletter_list_id"] + "/emails")
+    request = Net::HTTP::Post.new(uri.request_uri)
+    
+    request['Content-Type'] = 'application/json'
+    request['Authorization'] = "Bearer #{temp_access_token}"
+
+    myBody = {
+      emails: [
+        {
+          "email": subscriber_email,
+          "variables": {
+            "FirstName": subscriber_first_name
+          }
+        }
+      ]
+    }.to_json
+
+    request.body = myBody
+
+    response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
+        http.request(request)
+    end
+
+    response_code = JSON.parse(response.code)
+    response_body = JSON.parse(response.body)
+
+    if (response_code == 200)
       send_response = {
         status: 200,
         message: "Email Successfully Added in Newsletter",
@@ -90,7 +132,7 @@ class Api::V1::QuotesController < ApplicationController
         status: 422,
         errors: {
           message: Message.newsletter_api_error,
-          detail: response_body["detail"]
+          detail: response_body["message"]
         }
       }
       json_response(send_response, :unprocessable_entity)

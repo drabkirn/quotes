@@ -5,7 +5,8 @@ test:
   db_name:
   capybara_screenshots_path:
   newsletter_list_id:
-  newsletter_api_key:
+  newsletter_client_id:
+  newsletter_client_secret:
 
 
 development:
@@ -14,7 +15,8 @@ development:
   db_password:
   db_name:
   newsletter_list_id:
-  newsletter_api_key:
+  newsletter_client_id:
+  newsletter_client_secret:
 
 
 production:
@@ -23,4 +25,5 @@ production:
   db_password:
   db_name:
   newsletter_list_id:
-  newsletter_api_key:
+  newsletter_client_id:
+  newsletter_client_secret:
