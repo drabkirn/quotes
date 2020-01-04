@@ -11,6 +11,14 @@ module RequestSpecHelper
     }
   end
 
+  def api_valid_newsletter_headers
+    {
+      "Content-Type": "application/json",
+      "Accept": "application/drabkirn.quotes.v1",
+      "Origin": "http://192.168.225.128:3004"
+    }
+  end
+
   def ui_valid_headers
     {
       "Accept": "application/drabkirn.quotes.v1"
@@ -28,6 +36,14 @@ module RequestSpecHelper
     {
       "Content-Type": "application/json",
       "Accept": "application/drabkirn.quotes.v11"
+    }
+  end
+
+  def api_invalid_newsletter_headers
+    {
+      "Content-Type": "application/json",
+      "Accept": "application/drabkirn.quotes.v1",
+      "Origin": "http://192.168.225.128:3000"
     }
   end
 end

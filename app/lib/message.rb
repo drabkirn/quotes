@@ -29,11 +29,7 @@ class Message
   end
 
   def self.newsletter_invalid_subscriber_info
-    "It looks like you've entered invalid email or name. Please try again with proper details"
-  end
-
-  def self.newsletter_api_error
-    "Error: There is something wrong with the request"
+    "Error: It looks like you've entered invalid email or name. Please try again with proper details"
   end
 
   def self.newsletter_unauthorized_request
