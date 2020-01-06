@@ -8,6 +8,7 @@ function Footer() {
           <p className="col-dsk-6 col-mob-12 pl-20">Copyrights &copy;, 2019 - Drabkirn</p>
           <div className="footer-legal-links align-right col-dsk-6 col-mob-12 pr-20">
             <a href="https://drabkirn.cdadityang.xyz" target="_blank" rel="noopener noreferrer" className="mr-10">Drabkirn</a>
+            <a href="mailto:drabkirn@cdadityang.xyz" target="_blank" rel="noopener noreferrer" className="mr-10">Contact</a>
           </div>
         </div>
         <div className="float-clearfix"></div>

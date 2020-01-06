@@ -15,5 +15,7 @@ shared_examples 'Drabkirn Quotes Footer Content' do
     expect(page).to have_selector('.footer-legal p', text: '2019 - Drabkirn')
     expect(page).to have_selector('.footer-legal-links a', text: 'Drabkirn')
     expect(page).to have_selector('.footer-baaaaaa p', text: '@Baaaaaa')
+
+    expect(page).to have_link('Contact', href: 'mailto:drabkirn@cdadityang.xyz')
   end
 end

@@ -58,5 +58,6 @@ Need any help? Have any Questions? Or just say us hi!
 
 1. [Drabkirn Website](https://go.cdadityang.xyz/drab)
 2. [Our Blog](https://go.cdadityang.xyz/blog)
-3. [Twitter](https://go.cdadityang.xyz/DtwtK)
-4. [Instagram](https://go.cdadityang.xyz/DinsK)
+3. [Discord Server](https://go.cdadityang.xyz/discord)
+4. [Twitter](https://go.cdadityang.xyz/DtwtK)
+5. [Instagram](https://go.cdadityang.xyz/DinsK)
