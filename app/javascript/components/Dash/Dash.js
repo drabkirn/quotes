@@ -48,6 +48,8 @@ function Dash() {
           <div>
             <p>User ID: { user.id }</p>
             <p>Username: { user.username }</p>
+            <p>QuotesToken: { user.quotes_token }</p>
+            <p>API Count: { user.quotes_api_count }</p>
             <button onClick={ (e) => {
               localStorage.removeItem("quotes_user_token");
               window.location.href = "/dash";

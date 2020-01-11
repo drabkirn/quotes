@@ -3,6 +3,7 @@ require 'rails_helper'
 feature "/quotes/:id - Shows Quote of requested ID", js: true do
 
   before(:each) do
+    create(:user, quotes_token: "1d6c93b21328ac04cd88f6d045b99f")
     (1..3).each do |i|
       create(:quote, id: i)
     end

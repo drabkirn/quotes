@@ -3,6 +3,7 @@ require 'rails_helper'
 feature "All Quotes Page - /quotes", js: true do
   
   before(:each) do
+    create(:user, quotes_token: "1d6c93b21328ac04cd88f6d045b99f")
     3.times { create(:quote) }
     # Test for Twitter truncate text
     create(:quote, content: Faker::Lorem.sentence(word_count: 50))

@@ -99,7 +99,9 @@ class Api::V1::UsersController < ApplicationController
         message: Message.user_loaded(user.id),
         data: {
           id: user.id,
-          username: user.username
+          username: user.username,
+          quotes_token: user.quotes_token,
+          quotes_api_count: user.quotes_api_count
         }
       }
       json_response(send_response)

@@ -8,6 +8,14 @@ class Message
     "Drabkirn Quote with #{id} loaded successfully"
   end
 
+  def self.missing_quotes_token_header
+    "Error: Missing QuotesToken header in your request."
+  end
+
+  def self.wrong_quotes_token_header
+    "Exception: You've included wrong QuotesToken header in your request."
+  end
+
   # Users/appza Messages
   def self.users_callback_missing_params
     "Error: You're missing to send some important parameters. Check your request."

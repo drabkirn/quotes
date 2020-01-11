@@ -1,5 +1,7 @@
 class Api::V1::QuotesController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:newsletter_subscribe]
+  before_action :check_quotes_token_header, only: [:index, :show]
+  before_action :validate_quotes_token_header, only: [:index, :show]
 
   def index
     @quotes = Quote.all
@@ -68,6 +70,38 @@ class Api::V1::QuotesController < ApplicationController
 
   def subscriber_params
     params.require(:quote).permit(:firstName, :email)
+  end
+
+  def check_quotes_token_header
+    quotes_token_header = request.headers['QuotesToken'] ? request.headers['QuotesToken'] : nil
+    if !quotes_token_header
+      send_response = {
+        status: 401,
+        errors: {
+          message: Message.missing_quotes_token_header
+        }
+      }
+      json_response(send_response, :unauthorized)
+      return
+    end
+  end
+
+  def validate_quotes_token_header
+    quotes_token_header = request.headers['QuotesToken']
+    user = User.find_by(quotes_token: quotes_token_header)
+    if user
+      user.quotes_api_count += 1
+      user.save!
+    else
+      send_response = {
+        status: 401,
+        errors: {
+          message: Message.wrong_quotes_token_header
+        }
+      }
+      json_response(send_response, :unauthorized)
+      return
+    end
   end
 
   def subscriber_validation(firstName, email)

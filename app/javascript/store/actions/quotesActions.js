@@ -1,10 +1,18 @@
 // Get all the Quotes - /quotes
 export const fetchAllQuotes = () => {
   return (dispatch) => {
+    let quotesToken;
+    if(process.env.NODE_ENV == "production") {
+      quotesToken = "";
+    } else {
+      quotesToken = "1d6c93b21328ac04cd88f6d045b99f"
+    }
+
     var myHeaders = {
       'Content-Type': 'application/json',
       'User-Agent': 'Drabkirn Quotpa : Website : NA',
-      'Accept': 'application/drabkirn.quotes.v1'
+      'Accept': 'application/drabkirn.quotes.v1',
+      'QuotesToken': quotesToken
     };
     
     fetch('/quotes', { method: 'GET', headers: myHeaders })

@@ -1,8 +1,15 @@
 require "rails_helper"
 
 RSpec.describe ApplicationController, type: :request do
-  let(:api_v_headers) { api_valid_headers }
+  let(:user) { create(:user) }
   let(:ui_v_headers) { ui_valid_headers }
+  let(:api_v_headers) do
+    {
+      "Content-Type": "application/json",
+      "Accept": "application/drabkirn.quotes.v1",
+      "QuotesToken": user.quotes_token
+    }
+  end
   
   describe "check if an request is an API request or UI request" do
     context "check for API request" do
