@@ -41,11 +41,11 @@ end
 
 Capybara.server = :puma
 Capybara.server_host = '0.0.0.0'
-Capybara.server_port = 3005
+Capybara.server_port = 3007
 
 Capybara.default_driver = :firefox
 Capybara.javascript_driver = :firefox
-Capybara.app_host = 'http://127.0.0.1:3005'
+Capybara.app_host = 'http://127.0.0.1:3007'
 Capybara.default_max_wait_time = 10
 
 Capybara::Screenshot.register_driver(:firefox) do |driver, path|
