@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import MainHeader from '../Shared/MainHeader';
 import Footer from '../Shared/Footer';
+import { DRABKRIN_AUTHNA_BASE_URL, DRABKRIN_AUTHNA_APPZA_ID } from '../Shared/Defaults';
 
 import { fetchUserInfo } from '../../store/actions/usersActions';
 
@@ -57,7 +58,7 @@ function Dash() {
           </div>
         ) : (
           <div>
-            <a href="http://192.168.225.128:3002?appza_id=1">Login</a>
+            <a href={ DRABKRIN_AUTHNA_BASE_URL + "?appza_id=" +  DRABKRIN_AUTHNA_APPZA_ID}>Login</a>
           </div>
         )
       }
