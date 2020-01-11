@@ -3,7 +3,7 @@ export const fetchAllQuotes = () => {
   return (dispatch) => {
     let quotesToken;
     if(process.env.NODE_ENV == "production") {
-      quotesToken = "";
+      quotesToken = "0e43c5454eea8458f6b405c9db077a";
     } else {
       quotesToken = "1d6c93b21328ac04cd88f6d045b99f"
     }
