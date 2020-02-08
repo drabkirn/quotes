@@ -56,8 +56,16 @@ class Api::V1::UsersController < ApplicationController
 
   def authenticate
     auth_token = params["auth_token"]
-
-    auth_token_check(auth_token)
+    if !auth_token
+      send_response = {
+        status: 401,
+        errors: {
+          message: Message.missing_auth_token
+        }
+      }
+      json_response(send_response, :unauthorized)
+      return
+    end
 
     user = User.find_by(auth_token: auth_token)
     if user
@@ -76,7 +84,16 @@ class Api::V1::UsersController < ApplicationController
   def show
     auth_token = request.headers['Authorization'] ? request.headers['Authorization'].split(' ').last : nil
     
-    auth_token_check(auth_token)
+    if !auth_token
+      send_response = {
+        status: 401,
+        errors: {
+          message: Message.missing_auth_token
+        }
+      }
+      json_response(send_response, :unauthorized)
+      return
+    end
 
     user = User.find_by(auth_token: auth_token)
     if user
@@ -106,18 +123,5 @@ class Api::V1::UsersController < ApplicationController
 
   def auth_params
     params.require(:user).permit(:id, :username, :auth_token)
-  end
-
-  def auth_token_check(auth_token)
-    if !auth_token
-      send_response = {
-        status: 401,
-        errors: {
-          message: Message.missing_auth_token
-        }
-      }
-      json_response(send_response, :unauthorized)
-      return
-    end
   end
 end
