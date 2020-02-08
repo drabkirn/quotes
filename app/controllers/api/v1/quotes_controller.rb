@@ -1,8 +1,12 @@
 class Api::V1::QuotesController < ApplicationController
+  # When sending POST to newsletter, don't check for authenticity token
   skip_before_action :verify_authenticity_token, only: [:newsletter_subscribe]
+
+  # Quotes token header must be present and valid to get access to Quotes
   before_action :check_quotes_token_header, only: [:index, :show]
   before_action :validate_quotes_token_header, only: [:index, :show]
 
+  # API: GET /quotes
   def index
     @quotes = Quote.all
     send_response = {
@@ -13,6 +17,7 @@ class Api::V1::QuotesController < ApplicationController
     json_response(send_response)
   end
 
+  # API: GET /quotes/:id
   def show
     @quote_id = params[:id]
     @quote = Quote.find(@quote_id)
@@ -24,6 +29,8 @@ class Api::V1::QuotesController < ApplicationController
     json_response(send_response)
   end
 
+  # API: POST /newsletter_subscribe
+  ## NOTE: Request validation is complex below, understand it better.
   def newsletter_subscribe
     permitted_origins = ["http://192.168.225.128:3004", "https://drabkirn.cdadityang.xyz"]
     if(!permitted_origins.include?(request.origin))

@@ -40,28 +40,64 @@ function Dash() {
     <React.Fragment>
       <MainHeader />
 
-      <div>
-        <p>Dash</p>
-      </div>
+      <section>
+        <div className="container">
+          <div className="dash-heading align-center mb-40">
+            <h1>Dashboard</h1>
+            <u class="u-gold italic">Manage your content and API access, all in one place.</u>
+          </div>
 
-      {
-        user ? (
-          <div>
-            <p>User ID: { user.id }</p>
-            <p>Username: { user.username }</p>
-            <p>QuotesToken: { user.quotes_token }</p>
-            <p>API Count: { user.quotes_api_count }</p>
-            <button onClick={ (e) => {
-              localStorage.removeItem("quotes_user_token");
-              window.location.href = "/dash";
-            }}>Sign out local</button>
+          <div className="dash-content align-center">
+            {
+              user ? (
+                <React.Fragment>
+                  <table class="table-inside-container">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Value</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>User ID</td>
+                        <td>{ user.id }</td>
+                      </tr>
+                      <tr>
+                        <td>Username</td>
+                        <td>{ user.username }</td>
+                      </tr>
+                      <tr>
+                        <td>Quotes Token</td>
+                        <td>{ user.quotes_token }</td>
+                      </tr>
+                      <tr>
+                        <td>Your API Count</td>
+                        <td>{ user.quotes_api_count }</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <div className="dash-signout mt-50">
+                    <button className="btn wide-btn" onClick={ (e) => {
+                      localStorage.removeItem("quotes_user_token");
+                      window.location.href = "/dash";
+                    }}>Sign out local</button>
+                  </div>
+                </React.Fragment>
+              ) : (
+                <div>
+                  <a href={ DRABKRIN_AUTHNA_BASE_URL + "?appza_id=" +  DRABKRIN_AUTHNA_APPZA_ID} className="btn wide-btn">Login</a>
+                </div>
+              )
+            }
           </div>
-        ) : (
-          <div>
-            <a href={ DRABKRIN_AUTHNA_BASE_URL + "?appza_id=" +  DRABKRIN_AUTHNA_APPZA_ID}>Login</a>
-          </div>
-        )
-      }
+        </div>
+
+        <div className="container align-center mt-30">
+          <Link to={"/"} className="btn wide-btn">Back</Link>
+        </div>
+      </section>
       
       <Footer />
     </React.Fragment>

@@ -27,3 +27,12 @@ blockquote {
   line-height: 1;
   font-size: 1em;
 }
+
+th, td {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.italic {
+  font-style: italic;
+}
