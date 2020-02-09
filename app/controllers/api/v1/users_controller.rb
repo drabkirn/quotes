@@ -1,6 +1,6 @@
 class Api::V1::UsersController < ApplicationController
 
-  skip_before_action :verify_authenticity_token, only: [:callback, :destroy]
+  skip_before_action :verify_authenticity_token, only: [:callback]
   before_action :require_user, only: [:show, :destroy]
 
   attr_reader :current_user

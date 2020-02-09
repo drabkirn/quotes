@@ -4,7 +4,7 @@ let initState = {
   err: null
 };
 
-const quotesReducer = (state = initState, action) => {
+const usersReducer = (state = initState, action) => {
 switch (action.type){
   case 'FETCH_USER_INFO_SUCCESS':
     return {
@@ -13,14 +13,35 @@ switch (action.type){
       user: action.payload.data,
       isFetching: false
     };
-  case 'GET_ALL_QUOTES_API_ERROR':
+  case 'FETCH_USER_INFO_API_ERROR':
     return {
       ...state,
       err: action.err.error ? action.err.error : action.err.errors,
       user: null,
       isFetching: true
     };
-  case 'GET_ALL_QUOTES_ERROR':
+  case 'FETCH_USER_INFO_ERROR':
+    return {
+      ...state,
+      err: action.err.message,
+      user: null,
+      isFetching: true
+    };
+  case 'DELETE_USER_ACCOUNT_SUCCESS':
+    return {
+      ...state,
+      err: null,
+      user: null,
+      isFetching: true
+    };
+  case 'DELETE_USER_ACCOUNT_API_ERROR':
+    return {
+      ...state,
+      err: action.err.error ? action.err.error : action.err.errors,
+      user: null,
+      isFetching: true
+    };
+  case 'DELETE_USER_ACCOUNT_ERROR':
     return {
       ...state,
       err: action.err.message,
@@ -32,5 +53,4 @@ switch (action.type){
 }
 };
 
-
-export default quotesReducer;
+export default usersReducer;

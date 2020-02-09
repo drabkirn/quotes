@@ -6,7 +6,7 @@ import MainHeader from '../Shared/MainHeader';
 import Footer from '../Shared/Footer';
 import { DRABKRIN_AUTHNA_BASE_URL, DRABKRIN_AUTHNA_APPZA_ID } from '../Shared/Defaults';
 
-import { fetchUserInfo } from '../../store/actions/usersActions';
+import { fetchUserInfo, deleteUserAccount } from '../../store/actions/usersActions';
 
 function Dash() {
   // Working on User object URL Param
@@ -24,7 +24,7 @@ function Dash() {
 
   // Get the Redux state
   const store = useSelector(store => store);
-  const { user } = store.users;
+  const { user, err } = store.users;
 
   // Get the Redux Dispatch
   const dispatch = useDispatch();
@@ -44,14 +44,22 @@ function Dash() {
         <div className="container">
           <div className="dash-heading align-center mb-40">
             <h1>Dashboard</h1>
-            <u class="u-gold italic">Manage your content and API access, all in one place.</u>
+            <u className="u-gold italic">Manage your content and API access, all in one place.</u>
           </div>
 
           <div className="dash-content align-center">
             {
+              err ? (
+                <div className="jumbo error-jumbo">
+                  <p>{ err.message }.</p>
+                </div>
+              ) : ("")
+            }
+
+            {
               user ? (
                 <React.Fragment>
-                  <table class="table-inside-container">
+                  <table className="table-inside-container">
                     <thead>
                       <tr>
                         <th>Name</th>
@@ -83,6 +91,15 @@ function Dash() {
                       localStorage.removeItem("quotes_user_token");
                       window.location.href = "/dash";
                     }}>Sign out local</button>
+                    <br />
+                    <button className="btn wide-btn" onClick = { (e) => {
+                      let confirmDeletion = confirm('Are you sure you want to delete your account? This deletion will not have any impact on your Authna instance. Click "Ok" to confirm, or "Cancel" to cancel deletion.');
+                      if(confirmDeletion){
+                        const csrfToken = document.querySelector('[name="csrf-token"]').getAttribute('content');
+                        dispatch(deleteUserAccount(quotesUserToken, csrfToken));
+                        localStorage.removeItem("quotes_user_token");
+                      }
+                    }}>Delete Account</button>
                   </div>
                 </React.Fragment>
               ) : (
