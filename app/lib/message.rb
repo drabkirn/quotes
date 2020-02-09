@@ -29,6 +29,10 @@ class Message
     "User with ID: #{id} loaded."
   end
 
+  def self.user_destroyed(id)
+    "User with ID: #{id} destroyed from Quotes database, however, data on Authna instance is still intact."
+  end
+
   def self.wrong_auth_token
     "Wrong Authorization Token, please login again at Authna."
   end

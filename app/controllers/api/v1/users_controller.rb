@@ -1,6 +1,9 @@
 class Api::V1::UsersController < ApplicationController
 
-  skip_before_action :verify_authenticity_token, only: [:callback]
+  skip_before_action :verify_authenticity_token, only: [:callback, :destroy]
+  before_action :require_user, only: [:show, :destroy]
+
+  attr_reader :current_user
 
   def callback
     user_params = auth_params.to_h
@@ -82,8 +85,37 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def show
+    send_response = {
+      status: 200,
+      message: Message.user_loaded(@current_user.id),
+      data: {
+        id: @current_user.id,
+        username: @current_user.username,
+        quotes_token: @current_user.quotes_token,
+        quotes_api_count: @current_user.quotes_api_count
+      }
+    }
+    json_response(send_response)
+  end
+
+  def destroy
+    @current_user.destroy
+    send_response = {
+      status: 200,
+      message: Message.user_destroyed(@current_user.id),
+      data: {}
+    }
+    json_response(send_response)
+  end
+
+  private
+
+  def auth_params
+    params.require(:user).permit(:id, :username, :auth_token)
+  end
+
+  def require_user
     auth_token = request.headers['Authorization'] ? request.headers['Authorization'].split(' ').last : nil
-    
     if !auth_token
       send_response = {
         status: 401,
@@ -96,18 +128,9 @@ class Api::V1::UsersController < ApplicationController
     end
 
     user = User.find_by(auth_token: auth_token)
+
     if user
-      send_response = {
-        status: 200,
-        message: Message.user_loaded(user.id),
-        data: {
-          id: user.id,
-          username: user.username,
-          quotes_token: user.quotes_token,
-          quotes_api_count: user.quotes_api_count
-        }
-      }
-      json_response(send_response)
+      @current_user = user
     else
       send_response = {
         status: 401,
@@ -116,12 +139,7 @@ class Api::V1::UsersController < ApplicationController
         }
       }
       json_response(send_response, :unauthorized)
+      return
     end
-  end
-
-  private
-
-  def auth_params
-    params.require(:user).permit(:id, :username, :auth_token)
   end
 end

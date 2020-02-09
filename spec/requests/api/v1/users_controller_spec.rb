@@ -228,4 +228,49 @@ RSpec.describe Api::V1::UsersController, type: :request do
       end
     end
   end
+
+  describe 'DELETE #destroy' do
+    context "when the request is valid" do
+      before(:each) do
+        delete api_users_destroy_path, params: {}, headers: api_v_user_headers
+      end
+  
+      it "returns success destroyed message" do
+        expect(json['message']).to eq Message.user_destroyed(user.id)
+      end
+  
+      it "returns empty data" do
+        empty_hash = {}
+        expect(json['data']).to eq empty_hash
+      end
+  
+      it_behaves_like "returns 200 success status"
+    end
+
+    context "when the request is invalid" do
+      context "when auth_token is missing" do
+        before(:each) do
+          get api_users_show_path, params: {}, headers: api_v_headers
+        end
+    
+        it "returns missing token error message" do
+          expect(json['errors']['message']).to eq Message.missing_auth_token
+        end
+    
+        it_behaves_like "returns 401 unauthorized status"
+      end
+
+      context "when auth_token is wrong" do
+        before(:each) do
+          get api_users_show_path, params: {}, headers: api_inv_user_headers
+        end
+    
+        it "returns missing token error message" do
+          expect(json['errors']['message']).to eq Message.wrong_auth_token
+        end
+    
+        it_behaves_like "returns 401 unauthorized status"
+      end
+    end
+  end
 end

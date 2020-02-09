@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       post 'auth/callback', to: 'users#callback'
 
       get 'users/show', to: 'users#show'
+      delete 'users/destroy', to: 'users#destroy'
     end
   end
 
