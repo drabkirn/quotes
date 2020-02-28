@@ -5,7 +5,7 @@ export const fetchAllQuotes = () => {
     if(process.env.NODE_ENV == "production") {
       quotesToken = "0e43c5454eea8458f6b405c9db077a";
     } else {
-      quotesToken = "1d6c93b21328ac04cd88f6d045b99f"
+      quotesToken = "b725726d5dc3fa438037cda0d89cac"
     }
 
     var myHeaders = {

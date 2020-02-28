@@ -14,9 +14,13 @@ feature "/quotes/:id - Shows Quote of requested ID", js: true do
   it_behaves_like "Drabkirn Quotes Header Content"
 
   scenario "Main Section Content" do
-    expect(page).to have_selector('h3', text: @selected_quote.title)
+    expect(page).to have_selector('h2', text: @selected_quote.title)
     expect(page).to have_selector('blockquote', text: @selected_quote.content)
-    expect(page).to have_selector('p', text: @selected_quote.author)
+    expect(page).to have_selector('p', text: "- #{@selected_quote.author.upcase}")
+    expect(page).to have_selector('p', text: /PUBLISHED ON:/)
+    @selected_quote.tags.each do |tag|
+      expect(page).to have_selector('p', text: tag.upcase)
+    end
   end
 
   scenario "Navigation links" do
