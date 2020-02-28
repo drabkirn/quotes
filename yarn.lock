@@ -2376,10 +2376,10 @@ des.js@^1.0.0:
     inherits "^2.0.1"
     minimalistic-assert "^1.0.0"
 
-desityle@1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/desityle/-/desityle-1.0.3.tgz#852cd5697e8653d65590f1e6cd82ee3c524b49c2"
-  integrity sha512-g+mDmVH0LbgOkQP9NhxrWP4sjweJv9hMnr0dvpgYY3odK2uj97zlXO1EtveUXdRtBp7JUnlE09GFCiCepz3rEw==
+desityle@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/desityle/-/desityle-1.0.4.tgz#5c95f401f5038866da04319173c8ad3c36ede3f6"
+  integrity sha512-9KhyjnngFUxJq8HUM124tbnjayEzfkFyMId3EktcLPNfMSGMlNFa3SeDZkb1C7zqtIB9jfnQNUXwvdRLQ1pm9w==
 
 destroy@~1.0.4:
   version "1.0.4"

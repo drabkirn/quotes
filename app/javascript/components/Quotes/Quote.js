@@ -34,6 +34,13 @@ function Quote(props) {
     if(quoteId < 0 || quoteId > allQuotesLength) return <Redirect to="/quotes" />;
   }
 
+  let formattedPubDate;
+  if(allQuotes && allQuotes[quoteId - 1]) {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const pubDate = new Date((allQuotes[quoteId - 1]).created_at)
+    formattedPubDate = pubDate.toLocaleDateString("en-US", options);
+  }
+
   return (
     <React.Fragment>
       <Helmet>
@@ -86,9 +93,21 @@ function Quote(props) {
               </React.Fragment>
             ) : (
               <React.Fragment>
-                <h3 className="align-center mb-35">{ allQuotes && allQuotes[quoteId - 1].title }</h3>
+                <h2 className="align-center mb-35"><u className="u-quotes-pink">{ allQuotes && allQuotes[quoteId - 1].title }</u></h2>
                 <blockquote>{allQuotes && allQuotes[quoteId - 1].content}</blockquote>
-                <p className="align-right"><b><em>- { allQuotes && allQuotes[quoteId - 1].author }</em></b></p>
+                <p className="align-right p-badgetag p-quotes-by"><span className="badgetag badgetag-quotes-pink"><b><em>- { allQuotes && allQuotes[quoteId - 1].author }</em></b></span></p>
+
+                <p className="p-badgetag mt-40"><span className="badgetag badgetag-orange">Published on: { formattedPubDate && formattedPubDate }</span></p>
+
+                <div className="mt-40 align-center">
+                  {
+                    allQuotes && allQuotes[quoteId - 1].tags.map((tag) => {
+                      return (
+                        <p className="p-badgetag"><span className="badgetag badgetag-quotes-pink" key={tag}>{ tag }</span></p>
+                      );
+                    })
+                  }
+                </div>
               </React.Fragment>
             )
           }

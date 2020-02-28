@@ -36,3 +36,16 @@ th, td {
 .italic {
   font-style: italic;
 }
+
+.u-quotes-pink {
+  text-decoration-color: var(--quotpa-pink-color);
+}
+
+.p-quotes-by {
+  display: block;
+}
+
+.badgetag-quotes-pink {
+  background: var(--quotpa-pink-color);
+  color: var(--light-white-color);
+}
