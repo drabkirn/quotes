@@ -18,6 +18,7 @@
 [![Pulls](https://img.shields.io/github/issues-pr/drabkirn/quotes.svg)](https://github.com/drabkirn/quotes/pulls)
 [![Pulls](https://img.shields.io/github/issues-pr-closed/drabkirn/quotes.svg)](https://github.com/drabkirn/quotes/pulls)
 [![License](https://img.shields.io/github/license/drabkirn/quotes.svg)](https://choosealicense.com/licenses/agpl-3.0/)
+[![CLA assistant](https://cla-assistant.io/readme/badge/drabkirn/quotes)](https://cla-assistant.io/drabkirn/quotes) 
 
 Collection of quotes from Drabkirn to change your mindset to achieve more, get inspired, and improve your life.
 
