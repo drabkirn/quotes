@@ -29,8 +29,6 @@ Collection of quotes from Drabkirn to change your mindset to achieve more, get i
 
 ## Table of Contents
 - [Installation](#installation)
-  - [Development Installation](#development-installation)
-  - [Production Installation](#production-installation)
 - [Contributing](#contributing)
 - [Connect](#connect)
 
@@ -38,11 +36,7 @@ Collection of quotes from Drabkirn to change your mindset to achieve more, get i
 -----
 
 ## Installation
-### Development Installation:
-
------
-
-### Production Installation:
+**Coming soon**
 
 -----
 -----

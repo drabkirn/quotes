@@ -1,3 +1,4 @@
+# Handling custom Exceptions that Rails app throws
 module ExceptionHandler
   extend ActiveSupport::Concern
   

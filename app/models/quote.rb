@@ -1,10 +1,12 @@
 class Quote < ApplicationRecord
-  serialize :tags
   
+  ## Tags are an array, so initialize them as array
+  serialize :tags
   after_initialize do |quote|
     quote.tags = [] if quote.tags == nil
   end
   
+  ## Validate titile, content, author and tags - self explanatory
   validates :title, presence: true, length: { minimum: 10 }
   validates :content, presence: true, length: { minimum: 10 }
   validates :author, presence: true

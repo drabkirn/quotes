@@ -1,3 +1,4 @@
+# Helper class for all custom messages used through the app
 class Message
   # Quotes Messages
   def self.all_quotes_loaded

@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   include Response
   include ExceptionHandler
 
+  # For API requests, our custom Accept header must be present
   before_action :accept_header_check_for_api_requests
 
   # When making invalid API-only requests, raise 404
@@ -16,7 +17,8 @@ class ApplicationController < ActionController::Base
   end
 
   private
-
+    ## First check if the request is API or UI
+    ## If API request, then validate if it's our custom or else throw error.
     def accept_header_check_for_api_requests
       is_api_request = ApiRequestCheck.new.matches?(request)
       if is_api_request

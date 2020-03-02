@@ -1,4 +1,4 @@
-// Get all the Quotes - /quotes
+// Get all the Quotes - GET /quotes
 export const fetchAllQuotes = () => {
   return (dispatch) => {
     let quotesToken;

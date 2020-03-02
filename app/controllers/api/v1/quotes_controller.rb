@@ -1,8 +1,8 @@
 class Api::V1::QuotesController < ApplicationController
-  # When sending POST to newsletter, don't check for authenticity token
+  ## When sending POST to newsletter, don't check for authenticity token
   skip_before_action :verify_authenticity_token, only: [:newsletter_subscribe]
 
-  # Quotes token header must be present and valid to get access to Quotes
+  ## Quotes token header must be present and valid to get access to Quotes
   before_action :check_quotes_token_header, only: [:index, :show]
   before_action :validate_quotes_token_header, only: [:index, :show]
 
@@ -79,6 +79,8 @@ class Api::V1::QuotesController < ApplicationController
     params.require(:quote).permit(:firstName, :email)
   end
 
+  ## For every request made to Quotes :show, :index
+  ## Check whether QuotesToken header is present or not
   def check_quotes_token_header
     quotes_token_header = request.headers['QuotesToken'] ? request.headers['QuotesToken'] : nil
     if !quotes_token_header
@@ -93,6 +95,9 @@ class Api::V1::QuotesController < ApplicationController
     end
   end
 
+  ## For every request made to Quotes :show, :index
+  ## Check whether QuotesToken header is empty or is wrong
+  ## then send invalid message if something is wrong.
   def validate_quotes_token_header
     quotes_token_header = request.headers['QuotesToken']
     user = User.find_by(quotes_token: quotes_token_header)
@@ -111,6 +116,7 @@ class Api::V1::QuotesController < ApplicationController
     end
   end
 
+  ## For validation of newsletter, delete later
   def subscriber_validation(firstName, email)
     email_regex = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
     if(firstName.nil? || firstName.empty? || email.nil? || email.empty? )

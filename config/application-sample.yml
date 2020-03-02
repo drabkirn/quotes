@@ -12,7 +12,6 @@ development:
   db_username:
   db_password:
   db_name:
-  capybara_screenshots_path:
   appza_secret:
 
 
@@ -21,5 +20,4 @@ production:
   db_username:
   db_password:
   db_name:
-  capybara_screenshots_path:
   appza_secret:

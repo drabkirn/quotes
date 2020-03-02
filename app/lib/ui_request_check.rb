@@ -1,3 +1,5 @@
+# Helper class to check if the request recieved is an API request
+## If it's UI, it will have anything other than `application/json` as content type.
 class UiRequestCheck
   
   def matches?(request)

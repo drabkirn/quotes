@@ -1,3 +1,4 @@
+// Initial state
 let initState = {
   user: null,
   isFetching: true,
@@ -5,6 +6,7 @@ let initState = {
 };
 
 const usersReducer = (state = initState, action) => {
+  // Change the state as per actions it receives.
 switch (action.type){
   case 'FETCH_USER_INFO_SUCCESS':
     return {

@@ -1,10 +1,12 @@
+// Initial state
 let initState = {
-    quotes: null,
-    isFetching: true,
-    err: null
-  };
+  quotes: null,
+  isFetching: true,
+  err: null
+};
 
 const quotesReducer = (state = initState, action) => {
+  // Change the state as per actions it receives.
   switch (action.type){
     case 'GET_ALL_QUOTES_SUCCESS':
       return {
