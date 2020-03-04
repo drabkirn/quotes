@@ -36,5 +36,3 @@ yarn-debug.log*
 /coverage
 # Ignore quotes seed file
 /db/quotes_seed.rb
-# Ignore emails list files
-/db/emails.txt
