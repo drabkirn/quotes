@@ -9,9 +9,14 @@ module ExceptionHandler
 
   included do
     # Define custom handlers
+    ## For Invalid record and Routing error - 404
     rescue_from ActiveRecord::RecordInvalid, with: :four_not_four
     rescue_from ActionController::RoutingError, with: :four_not_four
+
+    ## For Internal Server ever - 500
     rescue_from ExceptionHandler::InternalServerError, with: :five_zero_zero
+
+    ## For others auth request - 401 - Unauthorized
     rescue_from ExceptionHandler::MissingAcceptHeader, with: :unauthorized_request
     rescue_from ExceptionHandler::WrongAcceptHeader, with: :unauthorized_request
   end

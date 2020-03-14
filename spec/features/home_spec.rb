@@ -28,7 +28,6 @@ feature "Drabkirn Quotes Homepage", js: true do
   scenario "Navigation links" do
     expect(page).to have_selector('.btn', text: 'All Quotes')
     expect(page).to have_selector('.btn', text: 'Dashboard')
-    expect(page).to have_link('Subscribe', href: 'https://drabkirn.cdadityang.xyz/subscribe')
   end
 
   scenario "Navigate to /quotes when button is clicked" do

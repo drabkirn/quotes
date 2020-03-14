@@ -8,7 +8,7 @@
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.2.2",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
-    "desityle": "^1.0.4",
+    "desityle": "^1.0.7",
     "history": "^4.10.1",
     "piwik-react-router": "^0.12.1",
     "prop-types": "^15.7.2",

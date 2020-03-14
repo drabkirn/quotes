@@ -8,7 +8,7 @@
 
 <!-- Add languages, CI/CD, main frameworks used from shields.io. Example -->
 [![Ruby 2.6.5](https://img.shields.io/badge/Ruby-v2.6.5-green.svg)](https://www.ruby-lang.org/en/)
-[![Rails 6.0.2](https://img.shields.io/badge/Rails-v6.0.2-brightgreen.svg)](https://rubyonrails.org/)
+[![Rails 6.0.2.1](https://img.shields.io/badge/Rails-v6.0.2.1-brightgreen.svg)](https://rubyonrails.org/)
 [![Rspec 3.9](https://img.shields.io/badge/RSpec-v3.9-red.svg)](http://rspec.info/)
 [![Build Status](https://travis-ci.org/drabkirn/quotes.svg?branch=master)](https://travis-ci.org/drabkirn/quotes)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/f8a35b6b70d96c3a4391/test_coverage)](https://codeclimate.com/github/drabkirn/quotes/test_coverage)

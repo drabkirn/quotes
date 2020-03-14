@@ -6,7 +6,7 @@ import Quotes from './Quotes/Quotes';
 import Quote from './Quotes/Quote';
 import Dash from './Dash/Dash';
 
-import 'desityle/dist/css/desityle.min.css';
+import 'desityle/build/css/desityle.min.css';
 import './Assets/css/quotes.css';
 
 function App() {
