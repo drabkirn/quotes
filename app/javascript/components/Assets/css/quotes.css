@@ -49,3 +49,15 @@ th, td {
   background: var(--quotpa-pink-color);
   color: var(--light-white-color);
 }
+
+.quote-share-btns {
+  text-align: center;
+}
+
+.quote-share-btns a {
+  border-bottom: none;
+}
+
+.quote-share-btns a img {
+  width: 100px;
+}

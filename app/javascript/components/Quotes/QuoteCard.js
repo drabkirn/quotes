@@ -6,6 +6,8 @@ import { DRABKRIN_QUOTES_BASE_URL } from '../Shared/Defaults';
 function QuoteCard(props) {
   const twitterCharLimit = 220;
   const twitterTruncatedText = textTruncate(props.quoteContent, twitterCharLimit);
+  const facebookShareURL = `https://www.facebook.com/sharer/sharer.php?u=https://drabkirn.quotes.cdadityang.xyz/quotes/${props.quoteId}`;
+  const linkedinShareURL = `https://www.linkedin.com/sharing/share-offsite/?url=https://drabkirn.quotes.cdadityang.xyz/quotes/${props.quoteId}`;
 
   const twitterShareURL = `https://twitter.com/intent/tweet?text=${ twitterTruncatedText }%0A&hashtags=drabkirn,quote&url=${DRABKRIN_QUOTES_BASE_URL}/quotes/${props.quoteId}&via=drabkirn`;
 
@@ -23,6 +25,8 @@ function QuoteCard(props) {
         <div className="card-footer align-center pt-10 pb-5">
           <a className="ml-5" href={ twitterShareURL } target="_blank" rel="noopener noreferrer"><img src="/content/icons/if-twitter-50x50.svg" alt="twtr-share-icon" /></a>
           <a className="ml-5" href={ whatsAppShareURL } target="_blank" rel="noopener noreferrer"><img src="/content/icons/if-whatsapp-50x50.svg" alt="wapp-share-icon" /></a>
+          <a className="ml-5" href={ facebookShareURL } target="_blank" rel="noopener noreferrer"><img src="/content/icons/if-facebook-50x50.svg" alt="fb-share-icon" /></a>
+          <a className="ml-5" href={ linkedinShareURL } target="_blank" rel="noopener noreferrer"><img src="/content/icons/if-linkedin-50x50.svg" alt="linkedin-share-icon" /></a>
         </div>
       </div>
     </React.Fragment>

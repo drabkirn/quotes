@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet";
 
 import MainHeader from '../Shared/MainHeader';
 import Footer from '../Shared/Footer';
+import { DRABKRIN_QUOTES_BASE_URL } from '../Shared/Defaults';
 import { fetchAllQuotes } from '../../store/actions/quotesActions';
 
 function Quote(props) {
@@ -39,6 +40,19 @@ function Quote(props) {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     const pubDate = new Date((allQuotes[quoteId - 1]).created_at)
     formattedPubDate = pubDate.toLocaleDateString("en-US", options);
+  }
+
+  // Sharing URLS
+  const twitterCharLimit = 220;
+  let twitterTruncatedText;
+  let twitterShareURL;
+  let whatsAppShareURL;
+  const facebookShareURL = `https://www.facebook.com/sharer/sharer.php?u=https%3A//drabkirn.quotes.cdadityang.xyz/quotes/${quoteId}`;
+  const linkedinShareURL = `https://www.linkedin.com/sharing/share-offsite/?url=https://drabkirn.quotes.cdadityang.xyz/quotes/${quoteId}`;
+  if(allQuotes && allQuotes[quoteId - 1]) {
+    twitterTruncatedText = textTruncate(allQuotes[quoteId - 1].content, twitterCharLimit); 
+    twitterShareURL = `https://twitter.com/intent/tweet?text=${ twitterTruncatedText }%0A&hashtags=drabkirn,quote&url=${DRABKRIN_QUOTES_BASE_URL}/quotes/${quoteId}&via=drabkirn`;
+    whatsAppShareURL = `https://api.whatsapp.com/send?text=${ allQuotes[quoteId - 1].content }%0A%0A See more at ${DRABKRIN_QUOTES_BASE_URL}`;
   }
 
   return (
@@ -103,10 +117,17 @@ function Quote(props) {
                   {
                     allQuotes && allQuotes[quoteId - 1].tags.map((tag) => {
                       return (
-                        <p className="p-badgetag"><span className="badgetag badgetag-quotes-pink" key={tag}>{ tag }</span></p>
+                        <p className="p-badgetag" key={tag}><span className="badgetag badgetag-quotes-pink">{ tag }</span></p>
                       );
                     })
                   }
+                </div>
+
+                <div className="quote-share-btns mt-50">
+                  <a className="ml-15" href={ twitterShareURL } target="_blank" rel="noopener noreferrer"><img src="/content/icons/if-twitter-50x50.svg" alt="twtr-share-icon" /></a>
+                  <a className="ml-15" href={ whatsAppShareURL } target="_blank" rel="noopener noreferrer"><img src="/content/icons/if-whatsapp-50x50.svg" alt="wapp-share-icon" /></a>
+                  <a className="ml-15" href={ facebookShareURL } target="_blank" rel="noopener noreferrer"><img src="/content/icons/if-facebook-50x50.svg" alt="fb-share-icon" /></a>
+                  <a className="ml-15" href={ linkedinShareURL } target="_blank" rel="noopener noreferrer"><img src="/content/icons/if-linkedin-50x50.svg" alt="linkedin-share-icon" /></a>
                 </div>
               </React.Fragment>
             )
@@ -114,13 +135,29 @@ function Quote(props) {
         </div>
 
         <div className="container align-center mt-60">
+          { quoteId === 1 ? ("") : (
+            <Link to={`/quotes/${quoteId - 1}`} className="btn">&#60;==</Link>
+          )}
           <Link to={"/quotes"} className="btn wide-btn">Back</Link>
+          { !allQuotes ? ("") : (
+            quoteId === allQuotes.length ? ("") : (
+              <Link to={`/quotes/${quoteId + 1}`} className="btn">==&#62;</Link>
+            )
+          ) }
         </div>
       </section>
 
       <Footer />
     </React.Fragment>
   );
+}
+
+function textTruncate(text, textLimit) {
+  if(text.length > textLimit) {
+    return text.substring(0, textLimit) + "...";
+  } else {
+    return text;
+  }
 }
 
 export default Quote;

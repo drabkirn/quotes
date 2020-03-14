@@ -32,10 +32,14 @@ feature "All Quotes Page - /quotes", js: true do
 
       expect(page).to have_selector('.card .card-footer a[href="https://twitter.com/intent/tweet?text=' + twitterTruncatedText + '%0A&hashtags=drabkirn,quote&url=' + drabkirnQuotesBaseURL + '/quotes/' + quote.id.to_s + '&via=drabkirn"]')
       expect(page).to have_selector('.card .card-footer a[href="https://api.whatsapp.com/send?text=' + quote.content + '%0A%0A See more at ' + drabkirnQuotesBaseURL)
+      expect(page).to have_selector('.card .card-footer a[href="https://www.facebook.com/sharer/sharer.php?u=' + drabkirnQuotesBaseURL + '/quotes/' + quote.id.to_s)
+      expect(page).to have_selector('.card .card-footer a[href="https://www.linkedin.com/sharing/share-offsite/?url=' + drabkirnQuotesBaseURL + '/quotes/' + quote.id.to_s)
     end
 
     expect(page).to have_selector('.card .card-footer img[alt="twtr-share-icon"]', count: Quote.all.count)
     expect(page).to have_selector('.card .card-footer img[alt="wapp-share-icon"]', count: Quote.all.count)
+    expect(page).to have_selector('.card .card-footer img[alt="fb-share-icon"]', count: Quote.all.count)
+    expect(page).to have_selector('.card .card-footer img[alt="linkedin-share-icon"]', count: Quote.all.count)
   end
 
   scenario "Navigation links" do

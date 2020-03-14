@@ -27,9 +27,30 @@ feature "/quotes/:id - Shows Quote of requested ID", js: true do
     expect(page).to have_selector('.wide-btn', text: 'Back')
   end
 
+  scenario "Previous and Next Quotes Navigation links" do
+    @selected_quote = Quote.find(2)
+    visit "/quotes/#{@selected_quote.id}"
+    expect(page).to have_selector('.btn', text: '==>')
+    expect(page).to have_selector('.btn', text: '<==')
+  end
+
+  scenario "Navigate to Previous Quote" do
+    @selected_quote = Quote.find(2)
+    visit "/quotes/#{@selected_quote.id}"
+    click_on '<=='
+    expect(page.current_path).to eq "/quotes/1"
+  end
+
   scenario "Navigate to /quotes when button is clicked" do
     click_on 'Back'
     expect(page.current_path).to eq "/quotes"
+  end
+
+  scenario "Navigate to Next Quote" do
+    @selected_quote = Quote.find(2)
+    visit "/quotes/#{@selected_quote.id}"
+    click_on '==>'
+    expect(page.current_path).to eq "/quotes/3"
   end
 
   it_behaves_like "Drabkirn Quotes Footer Content"
