@@ -1,19 +1,27 @@
+/* Global */
 :root {
   --quotpa-pink-color: #A53860;
 }
 
-.fs-1-6 {
-  font-size: 1.6em;
-}
-
-.header-intro-dsk-logo a, .header-intro-mob-logo a {
-  border-bottom: none;
+th, td {
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 blockquote {
   border-left-color: var(--quotpa-pink-color);
 }
 
+.italic {
+  font-style: italic;
+}
+
+/* Header */
+.header-intro-dsk-logo a, .header-intro-mob-logo a {
+  border-bottom: none;
+}
+
+/* Cards */
 .card:nth-child(even) {
   clear: both;
 }
@@ -28,15 +36,8 @@ blockquote {
   font-size: 1em;
 }
 
-th, td {
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
 
-.italic {
-  font-style: italic;
-}
-
+/* Others */
 .u-quotes-pink {
   text-decoration-color: var(--quotpa-pink-color);
 }

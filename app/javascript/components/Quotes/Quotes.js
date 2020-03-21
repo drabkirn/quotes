@@ -68,7 +68,13 @@ function Quotes() {
 
       <section>
         <div className="container">
-          <p className="mb-20">We usually release a new quote every Tuesday. We're also setting up an API so that developers can integrate our quotes in their applications. Here are all of our quotes: <em>(Click on a quote card to see more...)</em></p>
+          <p className="mb-20">We usually release a new quote once a week, but in case we are very imaginative, we may come up with a couple of them per week. If you wish to, we've also set up an API so that you can integrate our quotes in your applications. You should check out our docs on how to work on our API.</p>
+
+          <hr className="hr-center" />
+
+          <p>
+            Anyways, enough of the introduction; Here are all the quotes straight from our database <em>(Click on a quote card to see more and don't forget to share)</em>
+          </p>
 
           {
             allQuotes && allQuotes.map((quote) => {

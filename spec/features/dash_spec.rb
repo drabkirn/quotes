@@ -12,7 +12,9 @@ feature "/dash - User dashboard", js: true do
 
   scenario "Main Section Content" do
     expect(page).to have_selector('h1', text: "Dashboard")
-    expect(page).to have_selector('u', text: "Manage your content and API access, all in one place.")
+    expect(page).to have_selector('u', text: /Manage your content and API access, all in one place with secure login from Authna./)
+    expect(page).to have_link('Privacy Policy', href: 'https://drabkirn.cdadityang.xyz/legal/privacy_policy')
+    expect(page).to have_link('Terms & Conditions', href: 'https://drabkirn.cdadityang.xyz/legal/terms_conditions')
   end
 
   scenario "Login the user and check for details" do

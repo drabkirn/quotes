@@ -7,7 +7,7 @@ import Quote from './Quotes/Quote';
 import Dash from './Dash/Dash';
 
 import 'desityle/build/css/desityle.min.css';
-import './Assets/css/quotes.css';
+import './App.css';
 
 function App() {
   return (

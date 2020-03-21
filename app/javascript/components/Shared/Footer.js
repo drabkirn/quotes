@@ -5,10 +5,10 @@ function Footer() {
     <React.Fragment>
       <footer className="mt-80">
         <div className="footer-legal">
-          <p className="col-dsk-6 col-mob-12 pl-20">Copyrights &copy;, 2019 - Drabkirn</p>
+          <p className="col-dsk-6 col-mob-12 pl-20">Copyrights &copy;, 2019-2020 - <a href="https://drabkirn.cdadityang.xyz" target="_blank" rel="noopener noreferrer">Drabkirn</a></p>
           <div className="footer-legal-links align-right col-dsk-6 col-mob-12 pr-20">
-            <a href="https://drabkirn.cdadityang.xyz" target="_blank" rel="noopener noreferrer" className="mr-10">Drabkirn</a>
             <a href="https://drabkirn.cdadityang.xyz/subscribe" target="_blank" rel="noopener noreferrer" className="mr-10">Subscribe</a>
+            <a href="https://drabkirn.cdadityang.xyz/palace" target="_blank" rel="noopener noreferrer" className="mr-10">Palace</a>
             <a href="mailto:drabkirn@cdadityang.xyz" target="_blank" rel="noopener noreferrer" className="mr-10">Contact</a>
           </div>
         </div>

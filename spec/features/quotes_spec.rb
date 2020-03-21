@@ -13,8 +13,8 @@ feature "All Quotes Page - /quotes", js: true do
   it_behaves_like "Drabkirn Quotes Header Content"
 
   scenario "Main Section Content" do
-    expect(page).to have_selector('p', text: 'We usually release a new quote every Tuesday.')
-    expect(page).to have_selector('p', text: "Here are all of our quotes")
+    expect(page).to have_selector('p', text: /We usually release a new quote once a week, but in case we are very imaginative, we may come up with a couple of them per week/)
+    expect(page).to have_selector('p', text: /Here are all the quotes straight from our database/)
     
     drabkirnQuotesBaseURL = "https://drabkirn.quotes.cdadityang.xyz"
     allQuotes = Quote.all

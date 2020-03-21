@@ -21,6 +21,9 @@ feature "/quotes/:id - Shows Quote of requested ID", js: true do
     @selected_quote.tags.each do |tag|
       expect(page).to have_selector('p', text: tag.upcase)
     end
+
+    expect(page).to have_selector('h2', text: "Share em:")
+    expect(page).to have_selector('p', text: /Hey, did you know, you can share our quotes directly from below, we save you from heavy-lifting COPY-PASTING them/)
   end
 
   scenario "Navigation links" do

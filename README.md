@@ -4,12 +4,14 @@
 
 # Drabkirn Quotes
 
-> Codebase for website and API of Quotes. We write quotes about Life, Productivity and much more.
+> This repository is the codebase of our Drabkirn Quotes website. Did we mention, we write thoughts in the form to redefine inspiration in a few words.
 
 <!-- Add languages, CI/CD, main frameworks used from shields.io. Example -->
 [![Ruby 2.6.5](https://img.shields.io/badge/Ruby-v2.6.5-green.svg)](https://www.ruby-lang.org/en/)
 [![Rails 6.0.2.1](https://img.shields.io/badge/Rails-v6.0.2.1-brightgreen.svg)](https://rubyonrails.org/)
 [![Rspec 3.9](https://img.shields.io/badge/RSpec-v3.9-red.svg)](http://rspec.info/)
+[![React 16.12](https://img.shields.io/badge/React-v16.12-blue.svg)](https://reactjs.org/docs)
+[![Desityle 1.1.0](https://img.shields.io/badge/Desityle-v1.1.0-green.svg)](https://go.cdadityang.xyz/DnpmS)
 [![Build Status](https://travis-ci.org/drabkirn/quotes.svg?branch=master)](https://travis-ci.org/drabkirn/quotes)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/f8a35b6b70d96c3a4391/test_coverage)](https://codeclimate.com/github/drabkirn/quotes/test_coverage)
 [![Maintainability](https://api.codeclimate.com/v1/badges/f8a35b6b70d96c3a4391/maintainability)](https://codeclimate.com/github/drabkirn/quotes/maintainability)
@@ -20,9 +22,9 @@
 [![License](https://img.shields.io/github/license/drabkirn/quotes.svg)](https://choosealicense.com/licenses/agpl-3.0/)
 [![CLA assistant](https://cla-assistant.io/readme/badge/drabkirn/quotes)](https://cla-assistant.io/drabkirn/quotes) 
 
-Collection of quotes from Drabkirn to change your mindset to achieve more, get inspired, and improve your life.
+Change your mindset to achieve more, get inspired, and improve your life along with us. If you wish to, we've also set up an API so that you can integrate our quotes in your applications. You should check out our [documentation](https://go.cdadityang.xyz/docs#quotes) on how to work on our API.
 
-**[Visit Website here](https://drabkirn.quotes.cdadityang.xyz)**
+**[Visit Website here](https://go.cdadityang.xyz/quotes)**
 
 -----
 -----

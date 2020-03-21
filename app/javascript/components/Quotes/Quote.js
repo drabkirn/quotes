@@ -58,28 +58,28 @@ function Quote(props) {
   return (
     <React.Fragment>
       <Helmet>
-        <title>{ allQuotes ? (allQuotes[quoteId - 1].title + ` | Quote ${quoteId}`) : (`Drabkirn Quote ${quoteId}`) }</title>
+        <title>{ allQuotes ? (allQuotes[quoteId - 1].title + ` | Quote ${quoteId} | Drabkirn Quotes`) : (`Drabkirn Quote ${quoteId}`) }</title>
 
-        <meta name="description" content={ allQuotes ? (allQuotes[quoteId - 1].content) : ("Collection of quotes from Drabkirn to change your mindset to achieve more, get inspired, and improve your life. We write about anything, anywhere for anyone.") } />
+        <meta name="description" content={ allQuotes ? (allQuotes[quoteId - 1].content) : ("We write thoughts in the form to redefine inspiration in a few words. Change your mindset to achieve more, get inspired, and improve your life along with us.") } />
 
         {/* Facebook Meta */}
         <meta property="og:url" content={ `https://drabkirn.quotes.cdadityang.xyz/quotes/${quoteId}` } />
         <meta property="og:image" content="https://drabkirn.quotes.cdadityang.xyz/content/images/drabkirn-logo-180x180.png" />
-        <meta property="og:description" content={ allQuotes ? (allQuotes[quoteId - 1].content) : ("Collection of quotes from Drabkirn to change your mindset to achieve more, get inspired, and improve your life. We write about anything, anywhere for anyone.") } />
-        <meta property="og:title" content={ allQuotes ? (allQuotes[quoteId - 1].title + ` | Quote ${quoteId}`) : (`Drabkirn Quote ${quoteId}`) } />
-        <meta property="og:site_name" content={ allQuotes ? (allQuotes[quoteId - 1].title + ` | Quote ${quoteId}`) : (`Drabkirn Quote ${quoteId}`) } />
+        <meta property="og:description" content={ allQuotes ? (allQuotes[quoteId - 1].content) : ("We write thoughts in the form to redefine inspiration in a few words. Change your mindset to achieve more, get inspired, and improve your life along with us.") } />
+        <meta property="og:title" content={ allQuotes ? (allQuotes[quoteId - 1].title + ` | Quote ${quoteId} | Drabkirn Quotes`) : (`Drabkirn Quote ${quoteId}`) } />
+        <meta property="og:site_name" content={ allQuotes ? (allQuotes[quoteId - 1].title + ` | Quote ${quoteId} | Drabkirn Quotes`) : (`Drabkirn Quote ${quoteId}`) } />
         <meta property="og:see_also" content="https://drabkirn.quotes.cdadityang.xyz/quotes" />
 
         {/* G+ Meta tags */}
-        <meta itemprop="name" content={ allQuotes ? (allQuotes[quoteId - 1].title + ` | Quote ${quoteId}`) : (`Drabkirn Quote ${quoteId}`) } />
-        <meta itemprop="description" content={ allQuotes ? (allQuotes[quoteId - 1].content) : ("Collection of quotes from Drabkirn to change your mindset to achieve more, get inspired, and improve your life. We write about anything, anywhere for anyone.") } />
+        <meta itemprop="name" content={ allQuotes ? (allQuotes[quoteId - 1].title + ` | Quote ${quoteId} | Drabkirn Quotes`) : (`Drabkirn Quote ${quoteId}`) } />
+        <meta itemprop="description" content={ allQuotes ? (allQuotes[quoteId - 1].content) : ("We write thoughts in the form to redefine inspiration in a few words. Change your mindset to achieve more, get inspired, and improve your life along with us.") } />
         <meta itemprop="image" content="https://drabkirn.quotes.cdadityang.xyz/content/images/drabkirn-logo-180x180.png" />
 
         {/* Twitter Meta Tags */}
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:url" content={ `https://drabkirn.quotes.cdadityang.xyz/quotes/${quoteId}` } />
-        <meta name="twitter:title" content={ allQuotes ? (allQuotes[quoteId - 1].title + ` | Quote ${quoteId}`) : (`Drabkirn Quote ${quoteId}`) } />
-        <meta name="twitter:description" content={ allQuotes ? (allQuotes[quoteId - 1].content) : ("Collection of quotes from Drabkirn to change your mindset to achieve more, get inspired, and improve your life. We write about anything, anywhere for anyone.") } />
+        <meta name="twitter:title" content={ allQuotes ? (allQuotes[quoteId - 1].title + ` | Quote ${quoteId} | Drabkirn Quotes`) : (`Drabkirn Quote ${quoteId}`) } />
+        <meta name="twitter:description" content={ allQuotes ? (allQuotes[quoteId - 1].content) : ("We write thoughts in the form to redefine inspiration in a few words. Change your mindset to achieve more, get inspired, and improve your life along with us.") } />
         <meta name="twitter:image" content="https://drabkirn.quotes.cdadityang.xyz/content/images/drabkirn-logo-180x180.png" />
         
         {/* Themes Meta */}
@@ -121,6 +121,13 @@ function Quote(props) {
                       );
                     })
                   }
+                </div>
+
+                <div className="mt-50">
+                  <h2>Share em:</h2>
+                  <p>
+                    Hey, did you know, you can share our quotes directly from below, we save you from heavy-lifting COPY-PASTING them:
+                  </p>
                 </div>
 
                 <div className="quote-share-btns mt-50">

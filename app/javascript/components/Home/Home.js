@@ -32,28 +32,28 @@ function Home() {
   return (
     <React.Fragment>
       <Helmet>
-        <title>Drabkirn Quotes - Redefined inspiration in some words</title>
+        <title>Drabkirn Quotes - Redefine inspiration in a few words</title>
 
-        <meta name="description" content="Collection of quotes from Drabkirn to change your mindset to achieve more, get inspired, and improve your life. We write about anything, anywhere for anyone." />
+        <meta name="description" content="We write thoughts in the form to redefine inspiration in a few words. Change your mindset to achieve more, get inspired, and improve your life along with us." />
 
         {/* Facebook Meta */}
         <meta property="og:url" content="https://drabkirn.quotes.cdadityang.xyz" />
         <meta property="og:image" content="https://drabkirn.quotes.cdadityang.xyz/content/images/drabkirn-logo-180x180.png" />
-        <meta property="og:description" content="Collection of quotes from Drabkirn to change your mindset to achieve more, get inspired, and improve your life. We write about anything, anywhere for anyone." />
-        <meta property="og:title" content="Drabkirn Quotes - Redefined inspiration in some words" />
-        <meta property="og:site_name" content="Drabkirn Quotes - Redefined inspiration in some words" />
+        <meta property="og:description" content="We write thoughts in the form to redefine inspiration in a few words. Change your mindset to achieve more, get inspired, and improve your life along with us." />
+        <meta property="og:title" content="Drabkirn Quotes - Redefine inspiration in a few words" />
+        <meta property="og:site_name" content="Drabkirn Quotes - Redefine inspiration in a few words" />
         <meta property="og:see_also" content="https://drabkirn.quotes.cdadityang.xyz" />
 
         {/* G+ Meta tags */}
-        <meta itemprop="name" content="Drabkirn Quotes - Redefined inspiration in some words" />
-        <meta itemprop="description" content="Collection of quotes from Drabkirn to change your mindset to achieve more, get inspired, and improve your life. We write about anything, anywhere for anyone." />
+        <meta itemprop="name" content="Drabkirn Quotes - Redefine inspiration in a few words" />
+        <meta itemprop="description" content="We write thoughts in the form to redefine inspiration in a few words. Change your mindset to achieve more, get inspired, and improve your life along with us." />
         <meta itemprop="image" content="https://drabkirn.quotes.cdadityang.xyz/content/images/drabkirn-logo-180x180.png" />
 
         {/* Twitter Meta Tags */}
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:url" content="https://drabkirn.quotes.cdadityang.xyz" />
-        <meta name="twitter:title" content="Drabkirn Quotes - Redefined inspiration in some words" />
-        <meta name="twitter:description" content="Collection of quotes from Drabkirn to change your mindset to achieve more, get inspired, and improve your life. We write about anything, anywhere for anyone." />
+        <meta name="twitter:title" content="Drabkirn Quotes - Redefine inspiration in a few words" />
+        <meta name="twitter:description" content="We write thoughts in the form to redefine inspiration in a few words. Change your mindset to achieve more, get inspired, and improve your life along with us." />
         <meta name="twitter:image" content="https://drabkirn.quotes.cdadityang.xyz/content/images/drabkirn-logo-180x180.png" />
         
         {/* Themes Meta */}
@@ -73,7 +73,13 @@ function Home() {
       <section>
         <div className="container">
           <p>
-            We usually release a new quote every Tuesday. We're also setting up an API so that developers can integrate our quotes in their applications. Here's a random quote for you to get started:
+            We usually release a new quote once a week, but in case we are very imaginative, we may come up with a couple of them per week. If you wish to, we've also set up an API so that you can integrate our quotes in your applications. You should check out our <a href="https://drabkirn.cdadityang.xyz/docs/index.html#quotes">documentation</a> on how to work on our API.
+          </p>
+
+          <hr className="hr-center" />
+
+          <p>
+            Anyways, enough of the introduction; Here's a random quote for you to get started:
           </p>
 
           {

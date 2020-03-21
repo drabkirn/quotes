@@ -19,8 +19,8 @@ feature "Drabkirn Quotes Homepage", js: true do
     end
     getrandomQuoteTextFromDB = allQuotesContents[randomQuoteIndex]
 
-    expect(page).to have_selector('p', text: 'We usually release a new quote every Tuesday.')
-    expect(page).to have_selector('p', text: "Here's a random quote for you to get started")
+    expect(page).to have_selector('p', text: /We usually release a new quote once a week, but in case we are very imaginative, we may come up with a couple of them per week/)
+    expect(page).to have_selector('p', text: /Here's a random quote for you to get started:/)
 
     expect(page).to have_selector('blockquote', text: getrandomQuoteTextFromDB)
   end
