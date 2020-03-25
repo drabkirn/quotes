@@ -5,6 +5,7 @@ test:
   db_name:
   capybara_screenshots_path:
   appza_secret:
+  sitemap_host:
 
 
 development:
@@ -13,6 +14,7 @@ development:
   db_password:
   db_name:
   appza_secret:
+  sitemap_host:
 
 
 production:
@@ -21,3 +23,4 @@ production:
   db_password:
   db_name:
   appza_secret:
+  sitemap_host:
