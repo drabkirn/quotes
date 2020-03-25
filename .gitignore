@@ -36,3 +36,6 @@ yarn-debug.log*
 /coverage
 # Ignore quotes seed file
 /db/quotes_seed.rb
+# Sitemap files not required during dec
+/public/sitemap.xml
+/public/sitemap.xml.gz

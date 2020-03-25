@@ -52,3 +52,4 @@ end
 
 ## Custom Gems:
 gem 'figaro', '~> 1.1', '>= 1.1.1'
+gem 'sitemap_generator', '~> 6.1'
