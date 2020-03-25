@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { Helmet } from "react-helmet";
 
 import MainHeader from '../Shared/MainHeader';
 import Footer from '../Shared/Footer';
+import Pagination from '../Shared/Pagination';
 import QuoteCard from './QuoteCard';
 import { fetchAllQuotes } from '../../store/actions/quotesActions';
 
@@ -24,6 +25,31 @@ function Quotes() {
       dispatch(fetchAllQuotes());
     }
   }, []);
+
+  // Setting defaults for pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const [quotesPerPage] = useState(10);
+
+  // Get the listings for quotes
+  const indexOfLastQuote = currentPage * quotesPerPage;
+  const indexOfFirstQuote = indexOfLastQuote - quotesPerPage;
+
+  // Show only first 10 quotes, then show pagination, so we slice the quotes
+  let currentQuotes = [];
+  if(allQuotes){
+    currentQuotes = allQuotes.slice(indexOfFirstQuote, indexOfLastQuote);
+  }
+
+  // When user clicks on a paginate number, this will run.
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+
+    const paginationLiATags = document.querySelectorAll('.pagination li a');
+    paginationLiATags.forEach((aTag) => aTag.className = "");
+    paginationLiATags[pageNumber - 1].className = "pagination-active";
+
+    window.location.href="#quotesintro";
+  }
 
   return (
     <React.Fragment>
@@ -72,12 +98,12 @@ function Quotes() {
 
           <hr className="hr-center" />
 
-          <p>
+          <p id="quotesintro">
             Anyways, enough of the introduction; Here are all the quotes straight from our database <em>(Click on a quote card to see more and don't forget to share)</em>
           </p>
 
           {
-            allQuotes && allQuotes.map((quote) => {
+            currentQuotes && currentQuotes.map((quote) => {
               return(
                 <React.Fragment key={ quote.id }>
                   <QuoteCard
@@ -100,6 +126,10 @@ function Quotes() {
           }
 
           <div className="float-clearfix"></div>
+
+          <div>
+            <Pagination quotesPerPage={quotesPerPage} totalQuotes={allQuotes && allQuotes.length} paginate={paginate} />
+          </div>
         </div>
 
         <div className="container align-center mt-30">

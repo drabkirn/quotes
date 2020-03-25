@@ -40,6 +40,11 @@ feature "All Quotes Page - /quotes", js: true do
     expect(page).to have_selector('.card .card-footer img[alt="wapp-share-icon"]', count: Quote.all.count)
     expect(page).to have_selector('.card .card-footer img[alt="fb-share-icon"]', count: Quote.all.count)
     expect(page).to have_selector('.card .card-footer img[alt="linkedin-share-icon"]', count: Quote.all.count)
+
+    70.times { create(:quote) }
+    visit "/quotes"
+    expect(page).to have_selector('.pagination')
+    expect(page).to have_selector('.pagination li', count: 8)
   end
 
   scenario "Navigation links" do
