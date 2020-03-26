@@ -117,7 +117,7 @@ function Quote(props) {
                   {
                     allQuotes && allQuotes[quoteId - 1].tags.map((tag) => {
                       return (
-                        <p className="p-badgetag" key={tag}><span className="badgetag badgetag-quotes-pink">{ tag }</span></p>
+                        <p className="p-badgetag" key={tag}><Link to={"/quotes?tag=" + tag} className="badgetag badgetag-quotes-pink">{ tag }</Link></p>
                       );
                     })
                   }

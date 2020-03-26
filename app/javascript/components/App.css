@@ -37,6 +37,12 @@ blockquote {
 }
 
 
+/* Pagination */
+.pagination .pagination-active {
+  background: var(--quotpa-pink-color);
+}
+
+
 /* Others */
 .u-quotes-pink {
   text-decoration-color: var(--quotpa-pink-color);

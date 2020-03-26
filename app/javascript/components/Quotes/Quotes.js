@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { Helmet } from "react-helmet";
+import queryString from 'query-string';
 
 import MainHeader from '../Shared/MainHeader';
 import Footer from '../Shared/Footer';
@@ -9,7 +10,7 @@ import Pagination from '../Shared/Pagination';
 import QuoteCard from './QuoteCard';
 import { fetchAllQuotes } from '../../store/actions/quotesActions';
 
-function Quotes() {
+function Quotes(props) {
   // Get the Redux state
   const store = useSelector(store => store);
   
@@ -49,6 +50,28 @@ function Quotes() {
     paginationLiATags[pageNumber - 1].className = "pagination-active";
 
     window.location.href="#quotesintro";
+  }
+
+  // Search for `tag` query in the URL
+  // If there is one, search for all quotes that has the particular tag
+  // Then update the currentQuotes, pagination for the same
+  const tagParam = queryString.parse(props.location.search).tag;
+  let taggedQuotes;
+  let tag;
+  if(tagParam) {
+    if(Array.isArray(tagParam)) {
+      tag = tagParam[0];
+    } else {
+      tag = tagParam;
+    }
+    if(allQuotes){
+      currentQuotes = [];
+      taggedQuotes = [];
+      allQuotes.forEach((quote) => {
+        if(quote.tags.includes(tag)) taggedQuotes.push(quote);
+      });
+      currentQuotes = taggedQuotes.slice(indexOfFirstQuote, indexOfLastQuote);
+    }
   }
 
   return (
@@ -98,9 +121,17 @@ function Quotes() {
 
           <hr className="hr-center" />
 
-          <p id="quotesintro">
-            Anyways, enough of the introduction; Here are all the quotes straight from our database <em>(Click on a quote card to see more and don't forget to share)</em>
-          </p>
+          {
+            tagParam ? (
+              <p id="quotesintro">
+                Anyways, enough of the introduction; Here are all the quotes with tag <b><em>"{ tag }"</em></b> straight from our database <em>(Click on a quote card to see more and don't forget to share)</em>
+              </p>
+            ) : (
+              <p id="quotesintro">
+                Anyways, enough of the introduction; Here are all the quotes straight from our database <em>(Click on a quote card to see more and don't forget to share)</em>
+              </p>
+            )
+          }
 
           {
             currentQuotes && currentQuotes.map((quote) => {
@@ -128,11 +159,22 @@ function Quotes() {
           <div className="float-clearfix"></div>
 
           <div>
-            <Pagination quotesPerPage={quotesPerPage} totalQuotes={allQuotes && allQuotes.length} paginate={paginate} />
+            {
+              tagParam ? (
+                <Pagination quotesPerPage={quotesPerPage} totalQuotes={taggedQuotes && taggedQuotes.length} tag={tag} paginate={paginate} />
+              ) : (
+                <Pagination quotesPerPage={quotesPerPage} totalQuotes={allQuotes && allQuotes.length} paginate={paginate} />
+              )
+            }
           </div>
         </div>
 
         <div className="container align-center mt-30">
+          {
+            tagParam ? (
+              <Link to={"/quotes"} className="btn wide-btn">All Quotes</Link>
+            ) : ("")
+          }
           <Link to={"/"} className="btn wide-btn">Back</Link>
         </div>
       </section>

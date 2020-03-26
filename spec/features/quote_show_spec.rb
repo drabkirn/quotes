@@ -20,6 +20,7 @@ feature "/quotes/:id - Shows Quote of requested ID", js: true do
     expect(page).to have_selector('p', text: /PUBLISHED ON:/)
     @selected_quote.tags.each do |tag|
       expect(page).to have_selector('p', text: tag.upcase)
+      expect(page).to have_link(tag, href: "/quotes?tag=#{tag}")
     end
 
     expect(page).to have_selector('h2', text: "Share em:")

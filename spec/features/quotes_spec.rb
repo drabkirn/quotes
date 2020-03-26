@@ -47,6 +47,28 @@ feature "All Quotes Page - /quotes", js: true do
     expect(page).to have_selector('.pagination li', count: 8)
   end
 
+  scenario "Main section content with tag query string" do
+    5.times { create(:quote, tags: ["abc", "def", "ghi", "jkl"]) }
+    15.times { create(:quote) }
+    7.times { create(:quote, tags: ["abc", "mno", "pqr", "stw"]) }
+
+    visit "/quotes?tag=abc"
+
+    expect(page).to have_selector('p', text: /Here are all the quotes with tag "abc" straight from our database/)
+    expect(page).to have_selector('.card', count: 10)
+    click_on '2'
+    expect(page).to have_selector('.card', count: 2)
+    expect(page).to have_selector('.pagination')
+    expect(page).to have_selector('.pagination li', count: 2)
+
+    # Navigation links
+    expect(page).to have_selector('.wide-btn', text: 'All Quotes')
+
+    # Navigate when clicked
+    click_on 'All Quotes'
+    expect(page.current_path).to eq "/quotes"
+  end
+
   scenario "Navigation links" do
     expect(page).to have_selector('.wide-btn', text: 'Back')
   end
