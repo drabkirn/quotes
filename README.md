@@ -7,11 +7,11 @@
 > This repository is the codebase of our Drabkirn Quotes website. Did we mention, we write thoughts in the form to redefine inspiration in a few words.
 
 <!-- Add languages, CI/CD, main frameworks used from shields.io. Example -->
-[![Ruby 2.6.5](https://img.shields.io/badge/Ruby-v2.6.5-green.svg)](https://www.ruby-lang.org/en/)
-[![Rails 6.0.2.1](https://img.shields.io/badge/Rails-v6.0.2.1-brightgreen.svg)](https://rubyonrails.org/)
+[![Ruby 2.7.1](https://img.shields.io/badge/Ruby-v2.7.1-green.svg)](https://www.ruby-lang.org/en/)
+[![Rails 6.0.2.2](https://img.shields.io/badge/Rails-v6.0.2.2-brightgreen.svg)](https://rubyonrails.org/)
 [![Rspec 3.9](https://img.shields.io/badge/RSpec-v3.9-red.svg)](http://rspec.info/)
 [![React 16.12](https://img.shields.io/badge/React-v16.12-blue.svg)](https://reactjs.org/docs)
-[![Desityle 1.1.0](https://img.shields.io/badge/Desityle-v1.1.0-green.svg)](https://go.cdadityang.xyz/DnpmS)
+[![Desityle 1.1.3](https://img.shields.io/badge/Desityle-v1.1.3-green.svg)](https://go.cdadityang.xyz/DnpmS)
 [![Build Status](https://travis-ci.org/drabkirn/quotes.svg?branch=master)](https://travis-ci.org/drabkirn/quotes)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/f8a35b6b70d96c3a4391/test_coverage)](https://codeclimate.com/github/drabkirn/quotes/test_coverage)
 [![Maintainability](https://api.codeclimate.com/v1/badges/f8a35b6b70d96c3a4391/maintainability)](https://codeclimate.com/github/drabkirn/quotes/maintainability)
@@ -38,7 +38,7 @@ Change your mindset to achieve more, get inspired, and improve your life along w
 -----
 
 ## Installation
-**Coming soon**
+**We like to keep our GitHub repo clean and simple. So for usage and installation guides, please check out our [documentation here](https://go.cdadityang.xyz/QdocsU)**
 
 -----
 -----
